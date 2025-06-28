@@ -1,7 +1,27 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import "./globals.css";
+import "./globals.css"; // Global CSS
+import "../../public/assets/css/owl.carousel.css"; // Local CSS files
+import "../../public/assets/css/fontawesome-all.css";
+import "../../public/assets/css/flaticon.css";
+import "../../public/assets/css/meanmenu.css";
+import "../../public/assets/css/bootstrap.min.css";
+import "../../public/assets/css/video.min.css";
+import "../../public/assets/css/animate.min.css";
+import "../../public/assets/css/lightbox.css";
+import "../../public/assets/css/progess.css";
+import "../../public/assets/css/style.css";
+import "../../public/assets/css/custom.css";
+import "../../public/assets/css/responsive.css";
+import "../../public/assets/css/colors/switch.css";
+import "../../public/assets/css/code.css";
+
+import Script from "next/script"; // Next.js Script component for external scripts
+import { Inter } from "next/font/google";
+import AOSInit from "@/components/AOSInit";
+// Initialize Google Font (optional)
+const inter = Inter({ subsets: ["latin"] });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +45,98 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+          rel="stylesheet"
+        />
+        {/* Alternate color stylesheets */}
+        <link
+          href="/assets/css/colors/color-2.css"
+          rel="alternate stylesheet"
+          type="text/css"
+          title="color-2"
+        />
+        <link
+          href="/assets/css/colors/color-3.css"
+          rel="alternate stylesheet"
+          type="text/css"
+          title="color-3"
+        />
+        <link
+          href="/assets/css/colors/color-4.css"
+          rel="alternate stylesheet"
+          type="text/css"
+          title="color-4"
+        />
+        <link
+          href="/assets/css/colors/color-5.css"
+          rel="alternate stylesheet"
+          type="text/css"
+          title="color-5"
+        />
+        <link
+          href="/assets/css/colors/color-6.css"
+          rel="alternate stylesheet"
+          type="text/css"
+          title="color-6"
+        />
+        <link
+          href="/assets/css/colors/color-7.css"
+          rel="alternate stylesheet"
+          type="text/css"
+          title="color-7"
+        />
+        <link
+          href="/assets/css/colors/color-8.css"
+          rel="alternate stylesheet"
+          type="text/css"
+          title="color-8"
+        />
+        <link
+          href="/assets/css/colors/color-9.css"
+          rel="alternate stylesheet"
+          type="text/css"
+          title="color-9"
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}>
         <Navbar /> {/* ✅ This makes it show on all pages */}
-        <main className="pt-16">{children}</main>
+        <main className="">
+          <AOSInit />
+          {children}
+        </main>
+        {/* External Scripts */}
+        <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></Script>
+        <Script src="https://www.google.com/recaptcha/api.js" async defer />
+        <Script src="https://unpkg.com/vue@2" strategy="afterInteractive" />
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/assets/js/jquery-2.1.4.min.js"
+          strategy="beforeInteractive"></Script>
+        <Script
+          src="/assets/js/owl.carousel.min.js"
+          strategy="afterInteractive"></Script>
+        <Script
+          src="/assets/js/bootstrap.min.js"
+          strategy="beforeInteractive"></Script>
+        <Script src="/assets/js/popper.min.js"></Script>
+        <Script src="/assets/js/jarallax.js"></Script>
+        <Script src="/assets/js/jquery.magnific-popup.min.js"></Script>
+        <Script src="/assets/js/lightbox.js"></Script>
+        <Script src="/assets/js/jquery.meanmenu.js"></Script>
+        <Script src="/assets/js/scrollreveal.min.js"></Script>
+        <Script src="/assets/js/jquery.counterup.min.js"></Script>
+        <Script src="/assets/js/waypoints.min.js"></Script>
+        <Script src="/assets/js/jquery-ui.js"></Script>
+        <Script src="/assets/js/gmap3.min.js"></Script>
+        <Script src="/assets/js/switch.js"></Script>
+        <Script src="http://maps.google.com/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"></Script>
+        <Script src="/assets/js/Script.js" defer></Script>
       </body>
     </html>
   );

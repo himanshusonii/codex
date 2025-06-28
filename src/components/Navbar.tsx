@@ -1,145 +1,151 @@
-// src/components/Navbar.tsx
 "use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
-export default function Navbar() {
-  const [show, setShow] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
+const Navbar = () => {
+  const [location, setLocation] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setShow(false);
-      } else {
-        setShow(true);
-      }
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+    const storedLocation = localStorage.getItem("location");
+    if (storedLocation) {
+      setLocation(storedLocation);
+    }
+  }, []);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 bg-white shadow transition-transform duration-300 text-black ${
-        show ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="text-xl font-bold">MySite</div>
+    <header>
+      <div id="main-menu" className="main-menu-container">
+        <div className="main-menu">
+          <div className="container">
+            <div className="navbar-default">
+              <div className="navbar-header float-left">
+                <Link href="/" className="navbar-brand text-uppercase">
+                  <Image
+                    src="/assets/img/logo/Logo_ 1.png"
+                    alt="logo"
+                    width={150}
+                    height={50}
+                  />
+                </Link>
+              </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-6">
-          <li className="relative group">
-            <Link href="/">Home</Link>
-          </li>
-          <li className="relative group">
-            <span className="cursor-pointer">About</span>
-            <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow p-2">
-              <li>
-                <Link href="/contact" className="block px-4 py-2 hover:bg-gray-100">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li className="relative group">
-            <span className="cursor-pointer">Programs</span>
-            <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow p-2">
-              <li>
-                <Link href="/coding" className="block px-4 py-2 hover:bg-gray-100">
-                  Coding
-                </Link>
-              </li>
-              <li>
-                <Link href="/science" className="block px-4 py-2 hover:bg-gray-100">
-                  Science
-                </Link>
-              </li>
-              <li>
-                <Link href="/math" className="block px-4 py-2 hover:bg-gray-100">
-                  Math
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a
-              href="http://ec2-54-209-232-211.compute-1.amazonaws.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
-              LMS Login
-            </a>
-          </li>
-        </ul>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-2xl"
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          ☰
-        </button>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      {menuOpen && (
-        <div className="md:hidden bg-white shadow-md">
-          <ul className="flex flex-col gap-4 p-4">
-            <li>
-              <Link href="/" onClick={toggleMenu}>Home</Link>
-            </li>
-            <li>
-              <details>
-                <summary className="cursor-pointer">About</summary>
-                <ul className="pl-4 mt-2">
+              <div className="cart-search float-right ul-li find-location-header">
+                <ul>
                   <li>
-                    <Link href="/contact" onClick={toggleMenu}>Contact Us</Link>
+                    <Link href="/selectLocation">
+                      <i className="fas fa-map-marker-alt"></i>&nbsp;
+                      {location ? location : "Find Location"}
+                    </Link>
                   </li>
                 </ul>
-              </details>
-            </li>
-            <li>
-              <details>
-                <summary className="cursor-pointer">Programs</summary>
-                <ul className="pl-4 mt-2">
-                  <li>
-                    <Link href="/coding" onClick={toggleMenu}>Coding</Link>
-                  </li>
-                  <li>
-                    <Link href="/science" onClick={toggleMenu}>Science</Link>
-                  </li>
-                  <li>
-                    <Link href="/math" onClick={toggleMenu}>Math</Link>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a
-                href="http://ec2-54-209-232-211.compute-1.amazonaws.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={toggleMenu}
-              >
-                LMS Login
-              </a>
-            </li>
-          </ul>
+              </div>
+
+              <nav className="navbar-menu float-right">
+                <div className="nav-menu ul-li">
+                  <ul>
+                    <li className="menu-item-has-children ul-li-block">
+                      <Link href="/">Home</Link>
+                    </li>
+
+                    <li className="menu-item-has-children ul-li-block">
+                      <a href="#">About</a>
+                      <ul className="sub-menu">
+                        <li>
+                          <Link href="#">Contact Us</Link>
+                        </li>
+                        {/* <li><Link href="news.html">News & Events</Link></li> */}
+                      </ul>
+                    </li>
+
+                    <li className="menu-item-has-children ul-li-block">
+                      <a href="#">Programs</a>
+                      <ul className="sub-menu">
+                        <li>
+                          <Link href="/courses/coding">Coding</Link>
+                        </li>
+                        <li>
+                          <Link href="/science">Science</Link>
+                        </li>
+                        <li>
+                          <Link href="/math">Math</Link>
+                        </li>
+                        {/* <li><Link href="camp.html">Camp</Link></li> */}
+                      </ul>
+                    </li>
+
+                    <li className="menu-item-has-children ul-li-block">
+                      <a
+                        href="http://ec2-54-209-232-211.compute-1.amazonaws.com"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        LMS Login
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+
+              <div className="mobile-menu">
+                <div className="logo">
+                  <Link href="/">
+                    <Image
+                      src="/assets/img/logo/logo.png"
+                      alt="Logo"
+                      width={100}
+                      height={50} // or adjust to keep aspect ratio
+                    />
+                  </Link>
+                </div>
+
+                <nav>
+                  <ul>
+                    <li>
+                      <Link href="/">Home</Link>
+                    </li>
+                    <li>
+                      <a href="#">About</a>
+                      <ul>
+                        <li>
+                          <Link href="#">Contact Us</Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#">Programs</a>
+                      <ul>
+                        <li>
+                          <Link href="/coding">Coding</Link>
+                        </li>
+                        <li>
+                          <Link href="/science">Science</Link>
+                        </li>
+                        <li>
+                          <Link href="/math">Math</Link>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a
+                        href="http://ec2-54-209-232-211.compute-1.amazonaws.com/"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        LMS Login
+                      </a>
+                    </li>
+                    <li>
+                      <Link href="/contact">Contact</Link>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </header>
   );
-}
+};
+
+export default Navbar;
