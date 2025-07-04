@@ -2,7 +2,10 @@
 
 import CarouselSection from "@/components/CarouselSection";
 import { usePathname } from "next/navigation";
+
 const MathPage = () => {
+  const pathname = usePathname();
+
   const mathSlides = [
     {
       content: (
@@ -11,9 +14,11 @@ const MathPage = () => {
             <span>Unlock</span> Your Child’s <br />
             <span>Potential</span>
           </h2>
-          <a className="btn mt-4" href="https://...">
-            Book an assessment
-          </a>
+          <div className="layer-1-4 text-center mt-4">
+            <a className="btn" href="https://...">
+              Book an assessment
+            </a>
+          </div>
         </>
       ),
     },
@@ -24,9 +29,11 @@ const MathPage = () => {
             <span>Master Math</span> <br />
             Conquer <span>Competitions</span>
           </h2>
-          <a className="btn mt-4" href="https://...">
-            Book an assessment
-          </a>
+          <div className="layer-1-4 text-center mt-4">
+            <a className="btn" href="https://...">
+              Book an assessment
+            </a>
+          </div>
         </>
       ),
     },
@@ -37,19 +44,19 @@ const MathPage = () => {
             <span>Solve</span> Compete <br />
             <span>Excel</span>
           </h2>
-          <a className="btn mt-4" href="https://...">
-            Book an assessment
-          </a>
+          <div className="layer-1-4 text-center mt-4">
+            <a className="btn" href="https://...">
+              Book an assessment
+            </a>
+          </div>
         </>
       ),
     },
   ];
 
-  const pathname = usePathname();
-
   return (
     <>
-      {/* Carousel Section */}
+      {/* Math Hero Carousel */}
       <CarouselSection
         slides={mathSlides}
         key={pathname}
@@ -114,13 +121,7 @@ const MathPage = () => {
                       performance. Our goal? Helping them approach these
                       national competitions with confidence and skill.
                     </p>
-                    <a
-                      href="selectLocation.html"
-                      className="btn"
-                      v-if="!location"
-                    >
-                      Find a Location
-                    </a>
+                    
                     <a
                       href="course.html?prog=PROG_MATH"
                       className="btn"
@@ -168,13 +169,7 @@ const MathPage = () => {
                       not just understand math, but enjoy it, setting them up
                       for both academic success and future competitions.
                     </p>
-                    <a
-                      href="selectLocation.html"
-                      className="btn"
-                      v-if="!location"
-                    >
-                      Find a Location
-                    </a>
+                    
                     <a
                       href="course.html?prog=PROG_MATH"
                       className="btn"
@@ -220,13 +215,7 @@ const MathPage = () => {
                       unique problem-solving methods, helping them stay sharp,
                       focused, and ready for global competition.
                     </p>
-                    <a
-                      href="selectLocation.html"
-                      className="btn"
-                      v-if="!location"
-                    >
-                      Find a Location
-                    </a>
+                    
                     <a
                       href="course.html?prog=PROG_MATH"
                       className="btn"

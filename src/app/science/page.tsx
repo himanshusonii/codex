@@ -6,6 +6,13 @@ import Footer from "@/components/Footer";
 import CarouselSection from "@/components/CarouselSection";
 
 const SciencePage = () => {
+  const [hasLocation, setHasLocation] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    setHasLocation(!!window.location); // or pull from localStorage
+  }, []);
+
+
   const scienceSlides = [
     {
       content: (
@@ -93,7 +100,7 @@ const SciencePage = () => {
                       </strong>{" "}
                       K-5
                     </p>
-                    {!location ? (
+                    {!hasLocation ? (
                       <a href="/selectLocation.html" className="btn">
                         Find a Location
                       </a>
@@ -141,7 +148,7 @@ const SciencePage = () => {
                       </strong>{" "}
                       6-8
                     </p>
-                    {!location ? (
+                    {!hasLocation ? (
                       <a href="/selectLocation.html" className="btn">
                         Find a Location
                       </a>
@@ -188,7 +195,7 @@ const SciencePage = () => {
                       </strong>{" "}
                       9–12
                     </p>
-                    {!location ? (
+                    {!hasLocation ? (
                       <a href="/selectLocation.html" className="btn">
                         Find a Location
                       </a>
@@ -237,7 +244,7 @@ const SciencePage = () => {
                       </strong>{" "}
                       6–12
                     </p>
-                    {!location ? (
+                    {!hasLocation ? (
                       <a href="/selectLocation.html" className="btn">
                         Find a Location
                       </a>
