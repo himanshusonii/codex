@@ -51,55 +51,6 @@ export default function RootLayout({
           href="https://unpkg.com/aos@2.3.1/dist/aos.css"
           rel="stylesheet"
         />
-        {/* Alternate color stylesheets */}
-        {/* <link
-          href="/assets/css/colors/color-2.css"
-          rel="alternate stylesheet"
-          type="text/css"
-          title="color-2"
-        />
-        <link
-          href="/assets/css/colors/color-3.css"
-          rel="alternate stylesheet"
-          type="text/css"
-          title="color-3"
-        />
-        <link
-          href="/assets/css/colors/color-4.css"
-          rel="alternate stylesheet"
-          type="text/css"
-          title="color-4"
-        />
-        <link
-          href="/assets/css/colors/color-5.css"
-          rel="alternate stylesheet"
-          type="text/css"
-          title="color-5"
-        />
-        <link
-          href="/assets/css/colors/color-6.css"
-          rel="alternate stylesheet"
-          type="text/css"
-          title="color-6"
-        />
-        <link
-          href="/assets/css/colors/color-7.css"
-          rel="alternate stylesheet"
-          type="text/css"
-          title="color-7"
-        />
-        <link
-          href="/assets/css/colors/color-8.css"
-          rel="alternate stylesheet"
-          type="text/css"
-          title="color-8"
-        />
-        <link
-          href="/assets/css/colors/color-9.css"
-          rel="alternate stylesheet"
-          type="text/css"
-          title="color-9"
-        /> */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
@@ -113,11 +64,6 @@ export default function RootLayout({
         {/* External Scripts */}
         <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></Script>
         <Script src="https://www.google.com/recaptcha/api.js" async defer />
-        <Script src="https://unpkg.com/vue@2" strategy="afterInteractive" />
-        <Script
-          src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
-          strategy="afterInteractive"
-        />
         <Script
           src="/assets/js/jquery-2.1.4.min.js"
           strategy="beforeInteractive"
