@@ -199,9 +199,6 @@ const Coding: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </>
   );
 };

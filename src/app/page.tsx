@@ -1,5 +1,4 @@
 import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
 import MissionStatement from "@/components/MissionStatement";
 import ParentTestimonials from "@/components/ParentTestimonial";
 import Teachers from "@/components/Teachers";
@@ -284,9 +283,6 @@ const HomePage: React.FC = () => {
 
       {/* Mission Statement */}
       <MissionStatement />
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };

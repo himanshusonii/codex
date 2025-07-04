@@ -11,7 +11,7 @@ interface FormData {
   operationType?: string;
 }
 
-const FooterContact: React.FC = () => {
+const Footer: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -237,4 +237,4 @@ const FooterContact: React.FC = () => {
   );
 };
 
-export default FooterContact;
+export default Footer;

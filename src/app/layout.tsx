@@ -20,6 +20,7 @@ import "../../public/assets/css/code.css";
 import Script from "next/script"; // Next.js Script component for external scripts
 import { Inter } from "next/font/google";
 import AOSInit from "@/components/AOSInit";
+import Footer from "@/components/Footer";
 // Initialize Google Font (optional)
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,7 +52,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
         {/* Alternate color stylesheets */}
-        <link
+        {/* <link
           href="/assets/css/colors/color-2.css"
           rel="alternate stylesheet"
           type="text/css"
@@ -98,14 +99,16 @@ export default function RootLayout({
           rel="alternate stylesheet"
           type="text/css"
           title="color-9"
-        />
+        /> */}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}>
-        <Navbar /> {/* ✅ This makes it show on all pages */}
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
+      >
+        <Navbar />
         <main className="">
           <AOSInit />
           {children}
+          <Footer />
         </main>
         {/* External Scripts */}
         <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></Script>
@@ -117,13 +120,16 @@ export default function RootLayout({
         />
         <Script
           src="/assets/js/jquery-2.1.4.min.js"
-          strategy="beforeInteractive"></Script>
+          strategy="beforeInteractive"
+        ></Script>
         <Script
           src="/assets/js/owl.carousel.min.js"
-          strategy="afterInteractive"></Script>
+          strategy="afterInteractive"
+        ></Script>
         <Script
           src="/assets/js/bootstrap.min.js"
-          strategy="beforeInteractive"></Script>
+          strategy="beforeInteractive"
+        ></Script>
         <Script src="/assets/js/popper.min.js"></Script>
         <Script src="/assets/js/jarallax.js"></Script>
         <Script src="/assets/js/jquery.magnific-popup.min.js"></Script>
