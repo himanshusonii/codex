@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
-import axios from "axios";
+import axios from "@/lib/axios";
 import Image from "next/image";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface FormData {
   name: string;
@@ -28,7 +29,7 @@ const ContactForm: React.FC = () => {
   const [processing, setProcessing] = useState(false);
 
   const siteKey = "6LfEb3UbAAAAALDm4xKAJH55nA0fx7QxKqFFM2hW";
-  const recaptchaRef = useRef<HTMLDivElement | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -53,9 +54,9 @@ const ContactForm: React.FC = () => {
     setCaptchaError(false);
     setSuccess(false);
 
-    const recaptchaResponse = window.grecaptcha?.getResponse();
+    const recaptchaToken = await recaptchaRef.current?.getValue();
 
-    if (!recaptchaResponse) {
+    if (!recaptchaToken) {
       setCaptchaError(true);
       return;
     }
@@ -69,14 +70,12 @@ const ContactForm: React.FC = () => {
 
     try {
       const payload = { ...formData, operationType: "sendMsg" };
-      await axios.post(
-        "https://o145r4of4g.execute-api.us-east-1.amazonaws.com/dev/send-msg/create",
-        payload
-      );
+
+      await axios.post("send-msg/create", payload);
 
       setSuccess(true);
       setFormData({ name: "", number: "", email: "", course: "", msg: "" });
-      window.grecaptcha.reset();
+      recaptchaRef.current?.reset();
     } catch (err) {
       console.error("Submission error", err);
       setError(true);
@@ -100,7 +99,8 @@ const ContactForm: React.FC = () => {
                 <div className="register-form-area">
                   <form
                     className="contact_form"
-                    onSubmit={(e) => e.preventDefault()}>
+                    onSubmit={(e) => e.preventDefault()}
+                  >
                     <div className="contact-info">
                       <input
                         name="name"
@@ -132,7 +132,8 @@ const ContactForm: React.FC = () => {
                       <select
                         name="course"
                         value={formData.course}
-                        onChange={handleChange}>
+                        onChange={handleChange}
+                      >
                         <option value="">Select Course *</option>
                         <option value="Coding">Coding</option>
                         <option value="Science">Science</option>
@@ -146,20 +147,19 @@ const ContactForm: React.FC = () => {
                         name="msg"
                         placeholder="Message *"
                         value={formData.msg}
-                        onChange={handleChange}></textarea>
+                        onChange={handleChange}
+                      ></textarea>
                     </div>
 
                     <div className="nws-button text-uppercase text-center white text-capitalize mt-2">
-                      <div
-                        className="g-recaptcha"
-                        data-sitekey={siteKey}
-                        ref={recaptchaRef}></div>
+                      <ReCAPTCHA sitekey={siteKey} ref={recaptchaRef} />
 
                       <button
                         type="button"
                         className="mt-2"
                         onClick={submitForm}
-                        disabled={processing}>
+                        disabled={processing}
+                      >
                         {processing ? (
                           <>
                             Please wait..{" "}

@@ -63,7 +63,6 @@ export default function RootLayout({
         </main>
         {/* External Scripts */}
         <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></Script>
-        <Script src="https://www.google.com/recaptcha/api.js" async defer />
         <Script
           src="/assets/js/jquery-2.1.4.min.js"
           strategy="beforeInteractive"
