@@ -32,8 +32,6 @@ Author:         HTMLMATE Team
 				this.testimonialSlide();
 				this.videoPopup();
 				this.sponsorSlide();
-				this.bestproductSlide();
-				this.faqTAB();
 				this.contactMAP();
 				this.rateReview();
 				this.categorySlide();
@@ -345,89 +343,6 @@ Author:         HTMLMATE Team
 			},
 			/* End Of service slide
 			================================================*/
-
-
-			/* Start Of best product
-			================================================*/
-			bestproductSlide: function () {
-				$('#best-product-slide-item').owlCarousel({
-					margin: 25,
-					responsiveClass: true,
-					nav: true,
-					dots: false,
-					autoplay: false,
-					navText: ["<i class='fas fa-chevron-left'></i>", "<i class='fas fa-chevron-right'></i>"],
-					smartSpeed: 1000,
-					responsive: {
-						0: {
-							items: 1,
-						},
-						400: {
-							items: 1,
-						},
-						600: {
-							items: 2,
-						},
-						700: {
-							items: 2,
-						},
-						800: {
-							items: 2,
-						},
-						1000: {
-							items: 4,
-
-						}
-					},
-				})
-			},
-			/* End Of best product
-			================================================*/
-
-
-			/* Start Of best product
-			================================================*/
-			faqTAB: function () {
-				$(".tab-content-1").hide();
-				$(".tab-content-1:first").show();
-
-				/* if in tab mode */
-				$("ul.product-tab").on("click", "li", function () {
-
-					$(".tab-content-1").hide();
-					var activeTab = $(this).attr("rel");
-					$("#" + activeTab).fadeIn();
-
-					$("ul.product-tab li").removeClass("active");
-					$(this).addClass("active");
-
-					$(".tab_drawer_heading").removeClass("d_active");
-					$(".tab_drawer_heading[rel^='" + activeTab + "']").addClass("d_active");
-
-				});
-				/* if in drawer mode */
-				$(".tab_drawer_heading").on("click", function () {
-
-					$(".tab-content-1").hide();
-					var d_activeTab = $(this).attr("rel");
-					$("#" + d_activeTab).fadeIn();
-
-					$(".tab_drawer_heading").removeClass("d_active");
-					$(this).addClass("d_active");
-
-					$("ul.product-tab li").removeClass("active");
-					$("ul.product-tab li[rel^='" + d_activeTab + "']").addClass("active");
-				});
-
-
-				/* Extra class "tab_last" 
-				   to add border to right side
-				   of last tab */
-				$('ul.product-tab li').last().addClass("tab_last");
-			},
-			/* End Of best product
-			================================================*/
-
 
 			/* Start  Contact Map section
 			================================================*/

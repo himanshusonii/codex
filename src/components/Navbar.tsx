@@ -1,22 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useLocation } from "@/lib/LocationContext";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const [location, setLocation] = useState<string | null>(null);
-
-  useEffect(() => {
-    const storedLocation = localStorage.getItem("location");
-    if (storedLocation) {
-      setLocation(storedLocation);
-    }
-  }, []);
-
+  const { location } = useLocation();
+  const pathname = usePathname();
+  const isSelectLocationPage = pathname === "/selectLocation";
   return (
     <header>
-      <div id="main-menu" className="main-menu-container">
+      <div
+        id="main-menu"
+        className={`main-menu-container ${
+          isSelectLocationPage ? "menu-bg-overlay-custom" : ""
+        }`}
+      >
         <div className="main-menu">
           <div className="container">
             <div className="navbar-default">
@@ -36,7 +36,7 @@ const Navbar = () => {
                   <li>
                     <Link href="/selectLocation">
                       <i className="fas fa-map-marker-alt"></i>&nbsp;
-                      {location ? location : "Find Location"}
+                      {location || "Find Location"}
                     </Link>
                   </li>
                 </ul>
@@ -79,7 +79,8 @@ const Navbar = () => {
                       <a
                         href="http://ec2-54-209-232-211.compute-1.amazonaws.com"
                         target="_blank"
-                        rel="noopener noreferrer">
+                        rel="noopener noreferrer"
+                      >
                         LMS Login
                       </a>
                     </li>
@@ -130,7 +131,8 @@ const Navbar = () => {
                       <a
                         href="http://ec2-54-209-232-211.compute-1.amazonaws.com/"
                         target="_blank"
-                        rel="noopener noreferrer">
+                        rel="noopener noreferrer"
+                      >
                         LMS Login
                       </a>
                     </li>

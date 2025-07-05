@@ -45,3 +45,7 @@ body {
   clear: both;
   display: block;
 }
+.menu-bg-overlay-custom {
+  background: #000000;
+  padding: 10px 0px !important;
+}

@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import { LocationProvider } from "@/lib/LocationContext";
 import "./globals.css"; // Global CSS
+import "aos/dist/aos.css";
+
+import AOSInit from "@/components/AOSInit";
+import Footer from "@/components/Footer";
+
 import "../../public/assets/css/owl.carousel.css"; // Local CSS files
 import "../../public/assets/css/fontawesome-all.css";
 import "../../public/assets/css/flaticon.css";
@@ -19,8 +25,6 @@ import "../../public/assets/css/code.css";
 
 import Script from "next/script"; // Next.js Script component for external scripts
 import { Inter } from "next/font/google";
-import AOSInit from "@/components/AOSInit";
-import Footer from "@/components/Footer";
 // Initialize Google Font (optional)
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,23 +50,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link
-          href="https://unpkg.com/aos@2.3.1/dist/aos.css"
-          rel="stylesheet"
-        />
-      </head>
+      <head></head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
-        <Navbar />
-        <main className="">
-          <AOSInit />
-          {children}
-          <Footer />
-        </main>
+        <LocationProvider>
+          <Navbar />
+          <main className="">
+            <AOSInit />
+            {children}
+            <Footer />
+          </main>
+        </LocationProvider>
         {/* External Scripts */}
-        <Script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></Script>
         <Script
           src="/assets/js/jquery-2.1.4.min.js"
           strategy="beforeInteractive"

@@ -1,17 +1,15 @@
 "use client";
+
 import { useEffect } from "react";
+import AOS from "aos";
 
 const AOSInit: React.FC = () => {
   useEffect(() => {
-    const initAOS = () => {
-      if (typeof window !== "undefined" && window.AOS) {
-        window.AOS.init();
-      } else {
-        // Retry after a small delay if AOS is not yet available
-        setTimeout(initAOS, 100);
-      }
-    };
-    initAOS();
+    AOS.init({
+      duration: 1000, // animation duration (ms)
+      once: true, // only animate once on scroll
+      offset: 60, // offset (px) from the original trigger point
+    });
   }, []);
 
   return null;

@@ -1,23 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
+import axios from "@/lib/axios";
 import Image from "next/image";
 
 interface FormData {
   name: string;
-  email: string;
   msg: string;
   operationType?: string;
 }
 
 const Footer: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    msg: "",
-  });
-
+  const [formData, setFormData] = useState<FormData>({ name: "", msg: "" });
   const [emailSubscription, setEmailSubscription] = useState("");
   const [emailSendMsg, setEmailSendMsg] = useState("");
 
@@ -34,38 +28,33 @@ const Footer: React.FC = () => {
     clearMessages();
     const isSendMsg = operationType === "sendMsg";
 
-    setSubscriptionProcessing(true);
-
     if (
       (isSendMsg && (!formData.name || !emailSendMsg || !formData.msg)) ||
       (!isSendMsg && !emailSubscription)
     ) {
       setSubscriptionError(true);
-      setSubscriptionProcessing(false);
       return;
     }
 
-    const email = isSendMsg ? emailSendMsg : emailSubscription;
+    setSubscriptionProcessing(true);
+
     const payload = {
       ...formData,
-      email,
+      email: isSendMsg ? emailSendMsg : emailSubscription,
       operationType,
     };
 
     try {
-      await axios.post(
-        "https://o145r4of4g.execute-api.us-east-1.amazonaws.com/dev/send-msg/create",
-        payload
-      );
+      await axios.post("/send-msg/create", payload);
 
       setSubscriptionSuccess(true);
-      setSubscriptionProcessing(false);
-
-      setFormData({ name: "", email: "", msg: "" });
+      setFormData({ name: "", msg: "" });
       setEmailSendMsg("");
       setEmailSubscription("");
     } catch (error) {
       console.error("Submit error:", error);
+      setSubscriptionError(true);
+    } finally {
       setSubscriptionProcessing(false);
     }
   };
@@ -74,7 +63,8 @@ const Footer: React.FC = () => {
     <footer id="footer">
       <div
         id="contact_secound"
-        className="contact_secound_section backgroud-style">
+        className="contact_secound_section backgroud-style"
+      >
         <div className="container">
           <div className="contact-secound-content">
             <div className="row mt-5">
@@ -120,6 +110,7 @@ const Footer: React.FC = () => {
                   </div>
                 </div>
               </div>
+
               <div className="col-md-6">
                 <div className="footer_2 backgroud-style">
                   <div className="container">
@@ -127,7 +118,8 @@ const Footer: React.FC = () => {
                       <a
                         className="scrollup"
                         href="#"
-                        style={{ display: "inline-block" }}>
+                        style={{ display: "inline-block" }}
+                      >
                         <Image
                           src="/assets/img/banner/bt.png"
                           alt=""
@@ -138,7 +130,8 @@ const Footer: React.FC = () => {
                     </div>
                     <div
                       className="footer_2_logo text-center"
-                      style={{ display: "inline-block" }}>
+                      style={{ display: "inline-block" }}
+                    >
                       <Image
                         src="/assets/img/logo/logo.png"
                         alt="Logo"
@@ -146,6 +139,7 @@ const Footer: React.FC = () => {
                         height={150}
                       />
                     </div>
+
                     <div className="footer_2_subs text-center">
                       <p>
                         We take our mission of increasing global access to
@@ -154,7 +148,6 @@ const Footer: React.FC = () => {
                       <div className="subs-form relative-position">
                         <input
                           className="course"
-                          name="course"
                           type="email"
                           placeholder="Email Address *"
                           value={emailSubscription}
@@ -164,22 +157,21 @@ const Footer: React.FC = () => {
                           <button
                             type="button"
                             disabled={subscriptionProcessing}
-                            onClick={() => handleSubmit("subscription")}>
+                            onClick={() => handleSubmit("subscription")}
+                          >
                             {subscriptionProcessing
-                              ? "Please wait.."
+                              ? "Please wait..."
                               : "Subscribe now"}
                           </button>
                         </div>
                         {subscriptionSuccess && (
                           <div className="mt-3 alert alert-success">
-                            <strong>Success!</strong> Your subscription was
-                            completed successfully.
+                            <strong>Success!</strong> Subscription completed.
                           </div>
                         )}
                         {subscriptionError && (
                           <div className="mt-3 alert alert-danger">
-                            <strong>Error!</strong> Make sure to complete all
-                            the required fields.
+                            <strong>Error!</strong> Please fill all fields.
                           </div>
                         )}
                       </div>
@@ -188,6 +180,7 @@ const Footer: React.FC = () => {
                 </div>
               </div>
             </div>
+
             <div className="copy-right-menu mt-5">
               <div className="row">
                 <div className="col-md-5">

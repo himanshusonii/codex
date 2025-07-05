@@ -10,30 +10,24 @@ import {
 
 const LocationContext = createContext<
   | {
-      location: Location | null;
-      setLocation: (loc: Location) => void;
+      location: string | null;
+      setLocation: (loc: string) => void;
     }
   | undefined
 >(undefined);
 
 export const LocationProvider = ({ children }: { children: ReactNode }) => {
-  const [location, setLocationState] = useState<Location | null>(null);
+  const [location, setLocationState] = useState<string | null>(null);
 
-  // Set and persist to localStorage
-  const setLocation = (loc: Location) => {
-    localStorage.setItem("location", JSON.stringify(loc));
+  const setLocation = (loc: string) => {
+    localStorage.setItem("location", loc);
     setLocationState(loc);
   };
 
-  // Load from localStorage on first render
   useEffect(() => {
     const stored = localStorage.getItem("location");
     if (stored) {
-      try {
-        setLocationState(JSON.parse(stored));
-      } catch (err) {
-        console.error("Invalid location format in localStorage", err);
-      }
+      setLocationState(stored);
     }
   }, []);
 
