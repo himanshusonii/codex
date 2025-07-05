@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import CarouselSection from "@/components/CarouselSection";
 
 const SciencePage = () => {
@@ -11,7 +9,6 @@ const SciencePage = () => {
   useEffect(() => {
     setHasLocation(!!window.location); // or pull from localStorage
   }, []);
-
 
   const scienceSlides = [
     {

@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import CodingCourseCategories from "@/app/courses/components/CodingCourseCategories";
-import Footer from "@/components/Footer";
+import CodingCourseCategories from "@/app/coding/components/CodingCourseCategories";
 
 const Coding: React.FC = () => {
   return (
@@ -72,11 +71,13 @@ const Coding: React.FC = () => {
 
       <section
         id="why-choose"
-        className="why-choose-section coding-why backgroud-style shapedividers_com-3237 jarallax">
+        className="why-choose-section coding-why backgroud-style shapedividers_com-3237 jarallax"
+      >
         <div className="container">
           <div
             className="section-title mb-5 headline text-center text-dark"
-            data-aos="zoom-in">
+            data-aos="zoom-in"
+          >
             <span className="subtitle text-uppercase text-dark">
               Brains and Brawns ADVANTAGES
             </span>
@@ -139,7 +140,8 @@ const Coding: React.FC = () => {
                 <div
                   className="extra-pic text-center"
                   data-aos="fade-up"
-                  data-aos-duration="3000">
+                  data-aos-duration="3000"
+                >
                   <Image
                     src="/assets/img/coding/Coding - Brains and Brawns ADVANTAGES.png"
                     alt="img"

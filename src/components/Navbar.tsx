@@ -63,7 +63,7 @@ const Navbar = () => {
                       <a href="#">Programs</a>
                       <ul className="sub-menu">
                         <li>
-                          <Link href="/courses/coding">Coding</Link>
+                          <Link href="/coding">Coding</Link>
                         </li>
                         <li>
                           <Link href="/science">Science</Link>
