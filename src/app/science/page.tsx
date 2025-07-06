@@ -321,6 +321,7 @@ const SciencePage = () => {
       <section
         id="why-choose"
         className="why-choose-section exsciton-why backgroud-style shapedividers_com-5596 jarallax"
+        style={{ paddingTop: '40px', paddingBottom: '40px' }}
       >
         <div className="container">
           <div
@@ -383,11 +384,13 @@ const SciencePage = () => {
                   className="extra-pic text-center"
                   data-aos="fade-up"
                   data-aos-duration="3000"
+                  style={{ maxWidth: '280px', margin: '0 auto' }}
                 >
                   <img
                     src="/assets/img/banner/porvide-01-removebg-preview.png"
                     alt="img"
                     className="mx-auto"
+                    style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                   />
                 </div>
               </div>

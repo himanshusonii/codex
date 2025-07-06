@@ -86,12 +86,13 @@ const Coding: React.FC = () => {
         </div>
       </section>
       {/*<!-- End of slider section
-		============================================= -->*/}
+    ============================================= -->*/}
       <CodingCourseCategories />
 
       <section
         id="why-choose"
-        className="why-choose-section coding-why backgroud-style shapedividers_com-3237 jarallax">
+        className="why-choose-section coding-why backgroud-style shapedividers_com-3237 jarallax"
+        >
         <div className="container">
           <div
             className="section-title mb-5 headline text-center text-dark"
@@ -158,12 +159,14 @@ const Coding: React.FC = () => {
                 <div
                   className="extra-pic text-center"
                   data-aos="fade-up"
-                  data-aos-duration="3000">
+                  data-aos-duration="1200"
+                  style={{ maxWidth: '260px', margin: '0 auto' }}>
                   <Image
                     src="/assets/img/coding/Coding - Brains and Brawns ADVANTAGES.png"
                     alt="img"
-                    width={400}
-                    height={300}
+                    width={260}
+                    height={195}
+                    style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                   />
                 </div>
               </div>

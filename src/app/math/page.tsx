@@ -1,13 +1,24 @@
 "use client";
 
+
 import CarouselSection from "@/components/CarouselSection";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
+
+// Import AOS only on client
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const OwlCarousel = dynamic(() => import("react-owl-carousel"), { ssr: false });
 
+
 const MathPage = () => {
   const pathname = usePathname();
+
+  useEffect(() => {
+    AOS.init({ once: true });
+  }, []);
 
   const mathSlides = [
     {
