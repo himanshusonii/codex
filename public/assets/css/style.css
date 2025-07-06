@@ -6448,3 +6448,33 @@ ul.product-tab li.active:after {
 }
 
 /*---------------------------------------------------- */
+.newCarouselItem {
+  font-family: inherit;
+  font-size: 90px;
+  color: #fff;
+  font-weight: 100;
+  text-align: center;
+}
+.newCarouselItem span:first-of-type {
+  font-weight: 700;
+}
+.newCarouselItem span:last-of-type {
+  font-weight: 700;
+}
+.transDown {
+  transform: translateY(100%);
+}
+@media (max-width: 768px) {
+  .newCarouselItem {
+    font-size: 40px;
+  }
+  .newCarouselItem span:first-of-type {
+    font-weight: 400;
+  }
+  .newCarouselItem span:last-of-type {
+    font-weight: 400;
+  }
+  .transDown {
+    transform: translateY(200%);
+  }
+}

@@ -1,9 +1,16 @@
+"use client";
+
 import FAQ from "@/components/FAQ";
 import MissionStatement from "@/components/MissionStatement";
 import ParentTestimonials from "@/components/ParentTestimonial";
 import Teachers from "@/components/Teachers";
 import Head from "next/head";
 import Image from "next/image";
+
+import dynamic from "next/dynamic";
+const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
+  ssr: false,
+});
 
 interface Course {
   title: string;
@@ -94,9 +101,38 @@ const HomePage: React.FC = () => {
           content="Empowering students in STEM fields with innovative learning"
         />
       </Head>
+      <section id="" className="">
+        <OwlCarousel
+          className=""
+          loop
+          margin={10}
+          items={1}
+          autoplay
+          autoplayTimeout={3000}
+          dots={false}>
+          <div className="item slider-area slider-bg-1 relative-position">
+            <h2 className="newCarouselItem transDown">
+              <span>Unlock</span> Young <br />
+              Minds <span>Today</span>
+            </h2>
+          </div>
+          <div className="item slider-area slider-bg-2 relative-position">
+            <h2 className="newCarouselItem transDown">
+              <span>Build </span>Skills <br />
+              for <span>Tomorrow</span>
+            </h2>
+          </div>
+          <div className="item slider-area slider-bg-3 relative-position">
+            <h2 className="newCarouselItem transDown">
+              <span>Shape </span> a <br />
+              Brighter <span>Future</span>
+            </h2>
+          </div>
+        </OwlCarousel>
+      </section>
 
       {/* Hero Section */}
-      <section id="slide" className="slider-section">
+      {/* <section id="slide" className="slider-section">
         <div id="slider-item" className="slider-item-details">
           <div className="slider-area slider-bg-5 slider-bg-1 relative-position">
             <div className="slider-text">
@@ -138,7 +174,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Courses Section */}
 

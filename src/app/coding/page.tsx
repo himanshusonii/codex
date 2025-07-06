@@ -49,39 +49,28 @@ const Coding: React.FC = () => {
       {/*<!-- Start of slider section
     ============================================= -->*/}
 
-      <section id="slide1" className="slider-section inner-page-slider">
-        <div className="slider-item-details">
-          <div className="slider-area codeing-bg slider-bg-1 relative-position shapedividers_com-9470">
-            <div className="" style={{ transform: "translateY(90%)" }}>
-              <OwlCarousel
-                className=""
-                loop
-                margin={10}
-                items={1}
-                autoplay
-                autoplayTimeout={3000}
-                dots={false}>
-                {HeroSectionContent.map((content, index) => (
-                  <div className="item text-center" key={index}>
-                    <h2
-                      className=""
-                      style={{
-                        fontFamily: "inherit",
-                        fontSize: "90px",
-                        color: "#fff",
-                        fontWeight: "700",
-                      }}>
-                      {content.boldText1}
-                      <br />
-                      <span style={{ fontWeight: "100" }}>
-                        {content.normalText}&nbsp;
-                      </span>
-                      {content.boldText2}
-                    </h2>
-                  </div>
-                ))}
-              </OwlCarousel>
-            </div>
+      <section id="" className="">
+        <div className="slider-area codeing-bg slider-bg-1 relative-position shapedividers_com-9470">
+          <div className="transDown">
+            <OwlCarousel
+              className=""
+              loop
+              margin={10}
+              items={1}
+              autoplay
+              autoplayTimeout={3000}
+              dots={false}>
+              {HeroSectionContent.map((content, index) => (
+                <div className="item text-center" key={index}>
+                  <h2 className="newCarouselItem">
+                    <span>{content.boldText1}</span>
+                    <br />
+                    {content.normalText}&nbsp;
+                    <span>{content.boldText2}</span>
+                  </h2>
+                </div>
+              ))}
+            </OwlCarousel>
           </div>
         </div>
       </section>
@@ -91,8 +80,7 @@ const Coding: React.FC = () => {
 
       <section
         id="why-choose"
-        className="why-choose-section coding-why backgroud-style shapedividers_com-3237 jarallax"
-        >
+        className="why-choose-section coding-why backgroud-style shapedividers_com-3237 jarallax">
         <div className="container">
           <div
             className="section-title mb-5 headline text-center text-dark"
@@ -160,13 +148,17 @@ const Coding: React.FC = () => {
                   className="extra-pic text-center"
                   data-aos="fade-up"
                   data-aos-duration="1200"
-                  style={{ maxWidth: '260px', margin: '0 auto' }}>
+                  style={{ maxWidth: "260px", margin: "0 auto" }}>
                   <Image
                     src="/assets/img/coding/Coding - Brains and Brawns ADVANTAGES.png"
                     alt="img"
                     width={260}
                     height={195}
-                    style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      objectFit: "contain",
+                    }}
                   />
                 </div>
               </div>
