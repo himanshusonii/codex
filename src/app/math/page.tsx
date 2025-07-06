@@ -1,72 +1,15 @@
 "use client";
 
-
 import CarouselSection from "@/components/CarouselSection";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
-import { useEffect } from "react";
-
-// Import AOS only on client
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const OwlCarousel = dynamic(() => import("react-owl-carousel"), { ssr: false });
-
 
 const MathPage = () => {
   const pathname = usePathname();
 
-  useEffect(() => {
-    AOS.init({ once: true });
-  }, []);
 
-  const mathSlides = [
-    {
-      content: (
-        <>
-          <h2>
-            <span>Unlock</span> Your Child’s <br />
-            <span>Potential</span>
-          </h2>
-          <div className="layer-1-4 text-center mt-4">
-            <a className="btn" href="/course/math">
-              Book an assessment
-            </a>
-          </div>
-        </>
-      ),
-    },
-    {
-      content: (
-        <>
-          <h2>
-            <span>Master Math</span> <br />
-            Conquer <span>Competitions</span>
-          </h2>
-          <div className="layer-1-4 text-center mt-4">
-            <a className="btn" href="/course/math">
-              Book an assessment
-            </a>
-          </div>
-        </>
-      ),
-    },
-    {
-      content: (
-        <>
-          <h2>
-            <span>Solve</span> Compete <br />
-            <span>Excel</span>
-          </h2>
-          <div className="layer-1-4 text-center mt-4">
-            <a className="btn" href="/course/math">
-              Book an assessment
-            </a>
-          </div>
-        </>
-      ),
-    },
-  ];
 
   const mathCarouselConfig = {
     loop: true,
@@ -99,31 +42,28 @@ const MathPage = () => {
     <>
       {/* Math Hero Carousel */}
       <section id="slide1" className="slider-section inner-page-slider">
-        <div className="slider-item-details">
-          <div className="slider-area mathex-bg slider-bg-1 relative-position shapedividers_com-7285">
-            <div className="" style={{ transform: "translateY(90%)" }}>
-              <OwlCarousel {...mathCarouselConfig}>
-                {mathHeroContent.map((content, index) => (
-                  <div className="item text-center" key={index}>
-                    <h2
-                      style={{
-                        fontFamily: "inherit",
-                        fontSize: "90px",
-                        color: "#fff",
-                        fontWeight: "700",
-                      }}
-                    >
-                      {content.boldText1}
-                      <br />
-                      <span style={{ fontWeight: "100" }}>
-                        {content.normalText}&nbsp;
-                      </span>
-                      {content.boldText2}
-                    </h2>
-                  </div>
-                ))}
-              </OwlCarousel>
-            </div>
+        <div className="slider-area mathex-bg slider-bg-1 relative-position shapedividers_com-7285">
+          <div className="transDown">
+            <OwlCarousel
+              className=""
+              loop
+              margin={10}
+              items={1}
+              autoplay
+              autoplayTimeout={3000}
+              dots={false}
+            >
+              {mathHeroContent.map((content, index) => (
+                <div className="item text-center" key={index}>
+                  <h2 className="newCarouselItem">
+                    <span>{content.boldText1}</span>
+                    <br />
+                    {content.normalText}&nbsp;
+                    <span>{content.boldText2}</span>
+                  </h2>
+                </div>
+              ))}
+            </OwlCarousel>
           </div>
         </div>
       </section>
@@ -185,7 +125,7 @@ const MathPage = () => {
                       performance. Our goal? Helping them approach these
                       national competitions with confidence and skill.
                     </p>
-
+                    
                     <a
                       href="/course/math"
                       className="btn"
@@ -233,7 +173,7 @@ const MathPage = () => {
                       not just understand math, but enjoy it, setting them up
                       for both academic success and future competitions.
                     </p>
-
+                    
                     <a
                       href="/course/math"
                       className="btn"
@@ -279,7 +219,7 @@ const MathPage = () => {
                       unique problem-solving methods, helping them stay sharp,
                       focused, and ready for global competition.
                     </p>
-
+                    
                     <a
                       href="/course/math"
                       className="btn"

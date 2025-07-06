@@ -13,32 +13,7 @@ const SciencePage = () => {
     setHasLocation(!!window.location); // or pull from localStorage
   }, []);
 
-  const scienceSlides = [
-    {
-      content: (
-        <h2>
-          <span>Experiment </span> Explore <br />
-          <span>Excel</span>
-        </h2>
-      ),
-    },
-    {
-      content: (
-        <h2>
-          <span>Where Science Soars:</span> <br /> <span>Elementary</span> to{" "}
-          <span>AP Mastery!</span>
-        </h2>
-      ),
-    },
-    {
-      content: (
-        <h2>
-          <span>Branch Out with Science:</span> <br />
-          <span> Discover, </span> Experiment, <span>Succeed</span>
-        </h2>
-      ),
-    },
-  ];
+
 
   const scienceCarouselConfig = {
     loop: true,
@@ -71,31 +46,28 @@ const SciencePage = () => {
     <>
       {/* Hero Carousel */}
       <section id="slide1" className="slider-section inner-page-slider">
-        <div className="slider-item-details">
-          <div className="slider-area science-bg slider-bg-1 relative-position shapedividers_com-7285">
-            <div className="" style={{ transform: "translateY(90%)" }}>
-              <OwlCarousel {...scienceCarouselConfig}>
-                {scienceHeroContent.map((content, index) => (
-                  <div className="item text-center" key={index}>
-                    <h2
-                      style={{
-                        fontFamily: "inherit",
-                        fontSize: "90px",
-                        color: "#fff",
-                        fontWeight: "700",
-                      }}
-                    >
-                      {content.boldText1}
-                      <br />
-                      <span style={{ fontWeight: "100" }}>
-                        {content.normalText}&nbsp;
-                      </span>
-                      {content.boldText2}
-                    </h2>
-                  </div>
-                ))}
-              </OwlCarousel>
-            </div>
+        <div className="slider-area science-bg slider-bg-1 relative-position shapedividers_com-7285">
+          <div className="transDown">
+            <OwlCarousel
+              className=""
+              loop
+              margin={10}
+              items={1}
+              autoplay
+              autoplayTimeout={3000}
+              dots={false}
+            >
+              {scienceHeroContent.map((content, index) => (
+                <div className="item text-center" key={index}>
+                  <h2 className="newCarouselItem">
+                    <span>{content.boldText1}</span>
+                    <br />
+                    {content.normalText}&nbsp;
+                    <span>{content.boldText2}</span>
+                  </h2>
+                </div>
+              ))}
+            </OwlCarousel>
           </div>
         </div>
       </section>
@@ -321,7 +293,6 @@ const SciencePage = () => {
       <section
         id="why-choose"
         className="why-choose-section exsciton-why backgroud-style shapedividers_com-5596 jarallax"
-        style={{ paddingTop: '40px', paddingBottom: '40px' }}
       >
         <div className="container">
           <div
@@ -384,13 +355,11 @@ const SciencePage = () => {
                   className="extra-pic text-center"
                   data-aos="fade-up"
                   data-aos-duration="3000"
-                  style={{ maxWidth: '280px', margin: '0 auto' }}
                 >
                   <img
                     src="/assets/img/banner/porvide-01-removebg-preview.png"
                     alt="img"
                     className="mx-auto"
-                    style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                   />
                 </div>
               </div>
