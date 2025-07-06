@@ -4,11 +4,14 @@ import Navbar from "@/components/Navbar";
 import { LocationProvider } from "@/lib/LocationContext";
 import "./globals.css"; // Global CSS
 import "aos/dist/aos.css";
+//react-owl-carousel NPM
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import AOSInit from "@/components/AOSInit";
 import Footer from "@/components/Footer";
 
-import "../../public/assets/css/owl.carousel.css"; // Local CSS files
+//import "../../public/assets/css/owl.carousel.css"; // Local CSS files
 import "../../public/assets/css/fontawesome-all.css";
 import "../../public/assets/css/flaticon.css";
 import "../../public/assets/css/meanmenu.css";
@@ -67,8 +70,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
-      >
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}>
         <LocationProvider>
           <Navbar />
           <main>
@@ -77,26 +79,29 @@ export default function RootLayout({
             <Footer />
           </main>
         </LocationProvider>
-
-        {/* ✅ JS from public assets */}
-        <Script src="/assets/js/jquery-2.1.4.min.js" strategy="beforeInteractive" />
-        <Script src="/assets/js/bootstrap.min.js" strategy="beforeInteractive" />
-        <Script src="/assets/js/owl.carousel.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/popper.min.js" />
-        <Script src="/assets/js/jarallax.js" />
-        <Script src="/assets/js/jquery.magnific-popup.min.js" />
-        <Script src="/assets/js/lightbox.js" />
-        <Script src="/assets/js/jquery.meanmenu.js" />
-        <Script src="/assets/js/scrollreveal.min.js" />
-        <Script src="/assets/js/jquery.counterup.min.js" />
-        <Script src="/assets/js/waypoints.min.js" />
-        <Script src="/assets/js/jquery-ui.js" />
-        <Script src="/assets/js/gmap3.min.js" />
-        <Script src="/assets/js/switch.js" />
-        <Script src="/assets/js/Script.js" defer />
+        {/* External Scripts */}
         <Script
-          src="https://maps.google.com/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"
-        />
+          src="/assets/js/jquery-2.1.4.min.js"
+          strategy="beforeInteractive"></Script>
+        {/* <Script
+          src="/assets/js/owl.carousel.min.js"
+          strategy="afterInteractive"></Script> */}
+        <Script
+          src="/assets/js/bootstrap.min.js"
+          strategy="beforeInteractive"></Script>
+        <Script src="/assets/js/popper.min.js"></Script>
+        <Script src="/assets/js/jarallax.js"></Script>
+        <Script src="/assets/js/jquery.magnific-popup.min.js"></Script>
+        <Script src="/assets/js/lightbox.js"></Script>
+        <Script src="/assets/js/jquery.meanmenu.js"></Script>
+        <Script src="/assets/js/scrollreveal.min.js"></Script>
+        <Script src="/assets/js/jquery.counterup.min.js"></Script>
+        <Script src="/assets/js/waypoints.min.js"></Script>
+        <Script src="/assets/js/jquery-ui.js"></Script>
+        <Script src="/assets/js/gmap3.min.js"></Script>
+        <Script src="/assets/js/switch.js"></Script>
+        <Script src="http://maps.google.com/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"></Script>
+        <Script src="/assets/js/Script.js" defer></Script>
       </body>
     </html>
   );

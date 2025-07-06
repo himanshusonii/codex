@@ -1,6 +1,52 @@
+"use client";
+
 import Head from "next/head";
 import Image from "next/image";
 import CodingCourseCategories from "@/app/coding/components/CodingCourseCategories";
+
+import dynamic from "next/dynamic";
+const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
+  ssr: false,
+});
+
+const options = {
+  loop: true,
+  margin: 10,
+  nav: false,
+  items: 1,
+  dots: false,
+  autoplay: true,
+  autoplayTimeout: 5000,
+};
+
+interface CodingPageHeroSection {
+  boldText1: string;
+  normalText: string;
+  boldText2: string;
+}
+
+const HeroSectionContent: CodingPageHeroSection[] = [
+  {
+    boldText1: "Learn, Build, Succeed ",
+    normalText: "with",
+    boldText2: "Coding",
+  },
+  {
+    boldText1: "Prepare Your Child ",
+    normalText: "for the",
+    boldText2: "Digital Future",
+  },
+  {
+    boldText1: "Turn Ideas ",
+    normalText: "Into",
+    boldText2: "Digital Reality",
+  },
+  {
+    boldText1: "Preapre Your Child ",
+    normalText: "for the",
+    boldText2: "Digital Future",
+  },
+];
 
 const Coding: React.FC = () => {
   return (
@@ -16,51 +62,28 @@ const Coding: React.FC = () => {
       <section id="slide1" className="slider-section inner-page-slider">
         <div className="slider-item-details">
           <div className="slider-area codeing-bg slider-bg-1 relative-position shapedividers_com-9470">
-            <div className="category-slide">
-              <div className="slider-text">
-                <div className="section-title mb20 headline text-center">
-                  <div className="layer-1-3">
-                    <h2>
-                      <span>Learn, Build, Succeed </span>
-                      <br /> with <span>Coding</span>
+            <div className="" style={{ transform: "translateY(90%)" }}>
+              <OwlCarousel className="" {...options}>
+                {HeroSectionContent.map((content, index) => (
+                  <div className="item text-center" key={index}>
+                    <h2
+                      className=""
+                      style={{
+                        fontFamily: "inherit",
+                        fontSize: "90px",
+                        color: "#fff",
+                        fontWeight: "700",
+                      }}>
+                      {content.boldText1}
+                      <br />
+                      <span style={{ fontWeight: "100" }}>
+                        {content.normalText}&nbsp;
+                      </span>
+                      {content.boldText2}
                     </h2>
                   </div>
-                </div>
-              </div>
-
-              <div className="slider-text">
-                <div className="section-title mb20 headline text-center">
-                  <div className="layer-1-3">
-                    <h2>
-                      <span>Prepare Your Child</span> <br /> for the{" "}
-                      <span>Digital Future</span>
-                    </h2>
-                  </div>
-                </div>
-                <div className="layer-1-4 text-center"></div>
-              </div>
-              <div className="slider-text">
-                <div className="section-title mb20 headline text-center">
-                  <div className="layer-1-3">
-                    <h2>
-                      <span>Turn Ideas </span>Into <br />{" "}
-                      <span>Digital Reality</span>
-                    </h2>
-                  </div>
-                </div>
-                <div className="layer-1-4 text-center"></div>
-              </div>
-              <div className="slider-text">
-                <div className="section-title mb20 headline text-center">
-                  <div className="layer-1-3">
-                    <h2>
-                      <span>Prepare Your Child</span>
-                      <br /> for the <span>Digital Future</span>
-                    </h2>
-                  </div>
-                </div>
-                <div className="layer-1-4 text-center"></div>
-              </div>
+                ))}
+              </OwlCarousel>
             </div>
           </div>
         </div>
@@ -71,13 +94,11 @@ const Coding: React.FC = () => {
 
       <section
         id="why-choose"
-        className="why-choose-section coding-why backgroud-style shapedividers_com-3237 jarallax"
-      >
+        className="why-choose-section coding-why backgroud-style shapedividers_com-3237 jarallax">
         <div className="container">
           <div
             className="section-title mb-5 headline text-center text-dark"
-            data-aos="zoom-in"
-          >
+            data-aos="zoom-in">
             <span className="subtitle text-uppercase text-dark">
               Brains and Brawns ADVANTAGES
             </span>
@@ -140,8 +161,7 @@ const Coding: React.FC = () => {
                 <div
                   className="extra-pic text-center"
                   data-aos="fade-up"
-                  data-aos-duration="3000"
-                >
+                  data-aos-duration="3000">
                   <Image
                     src="/assets/img/coding/Coding - Brains and Brawns ADVANTAGES.png"
                     alt="img"
