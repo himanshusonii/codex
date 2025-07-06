@@ -59,7 +59,8 @@ const Coding: React.FC = () => {
                 margin={10}
                 items={1}
                 autoplay
-                autoplayTimeout={3000}>
+                autoplayTimeout={3000}
+                dots={false}>
                 {HeroSectionContent.map((content, index) => (
                   <div className="item text-center" key={index}>
                     <h2
