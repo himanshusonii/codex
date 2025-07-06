@@ -2,6 +2,9 @@
 
 import CarouselSection from "@/components/CarouselSection";
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
+
+const OwlCarousel = dynamic(() => import("react-owl-carousel"), { ssr: false });
 
 const MathPage = () => {
   const pathname = usePathname();
@@ -54,15 +57,65 @@ const MathPage = () => {
     },
   ];
 
+  const mathCarouselConfig = {
+    loop: true,
+    margin: 10,
+    items: 1,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    dots :false 
+  };
+
+  const mathHeroContent = [
+    {
+      boldText1: "Unlock ",
+      normalText: "Your Child’s",
+      boldText2: " Potential",
+    },
+    {
+      boldText1: "Master Math ",
+      normalText: "Conquer",
+      boldText2: " Competitions",
+    },
+    {
+      boldText1: "Solve ",
+      normalText: "Compete",
+      boldText2: " Excel",
+    },
+  ];
+
   return (
     <>
       {/* Math Hero Carousel */}
-      <CarouselSection
-        slides={mathSlides}
-        key={pathname}
-        id="math-carousel"
-        backgroundClass="mathex-bg slider-bg-1 shapedividers_com-7285"
-      />
+      <section id="slide1" className="slider-section inner-page-slider">
+        <div className="slider-item-details">
+          <div className="slider-area mathex-bg slider-bg-1 relative-position shapedividers_com-7285">
+            <div className="" style={{ transform: "translateY(90%)" }}>
+              <OwlCarousel {...mathCarouselConfig}>
+                {mathHeroContent.map((content, index) => (
+                  <div className="item text-center" key={index}>
+                    <h2
+                      style={{
+                        fontFamily: "inherit",
+                        fontSize: "90px",
+                        color: "#fff",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {content.boldText1}
+                      <br />
+                      <span style={{ fontWeight: "100" }}>
+                        {content.normalText}&nbsp;
+                      </span>
+                      {content.boldText2}
+                    </h2>
+                  </div>
+                ))}
+              </OwlCarousel>
+            </div>
+          </div>
+        </div>
+      </section>
       <section
         id="course-category"
         className="course-category-section mathex-cc-sec jarallax"
@@ -121,7 +174,7 @@ const MathPage = () => {
                       performance. Our goal? Helping them approach these
                       national competitions with confidence and skill.
                     </p>
-                    
+
                     <a
                       href="/course/math"
                       className="btn"
@@ -169,7 +222,7 @@ const MathPage = () => {
                       not just understand math, but enjoy it, setting them up
                       for both academic success and future competitions.
                     </p>
-                    
+
                     <a
                       href="/course/math"
                       className="btn"
@@ -215,7 +268,7 @@ const MathPage = () => {
                       unique problem-solving methods, helping them stay sharp,
                       focused, and ready for global competition.
                     </p>
-                    
+
                     <a
                       href="/course/math"
                       className="btn"

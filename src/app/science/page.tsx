@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import CarouselSection from "@/components/CarouselSection";
+
+const OwlCarousel = dynamic(() => import("react-owl-carousel"), { ssr: false });
 
 const SciencePage = () => {
   const [hasLocation, setHasLocation] = useState<boolean | null>(null);
@@ -37,10 +40,66 @@ const SciencePage = () => {
     },
   ];
 
+  const scienceCarouselConfig = {
+    loop: true,
+    margin: 10,
+    items: 1,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    dots: false, // Remove dots (pagination indicators)
+  };
+
+  const scienceHeroContent = [
+    {
+      boldText1: "Experiment ",
+      normalText: "Explore",
+      boldText2: " Excel",
+    },
+    {
+      boldText1: "Where Science Soars:",
+      normalText: "Elementary to",
+      boldText2: " AP Mastery!",
+    },
+    {
+      boldText1: "Branch Out with Science:",
+      normalText: "Discover, Experiment,",
+      boldText2: " Succeed",
+    },
+  ];
+
   return (
     <>
       {/* Hero Carousel */}
-      <CarouselSection slides={scienceSlides} />
+      <section id="slide1" className="slider-section inner-page-slider">
+        <div className="slider-item-details">
+          <div className="slider-area science-bg slider-bg-1 relative-position shapedividers_com-7285">
+            <div className="" style={{ transform: "translateY(90%)" }}>
+              <OwlCarousel {...scienceCarouselConfig}>
+                {scienceHeroContent.map((content, index) => (
+                  <div className="item text-center" key={index}>
+                    <h2
+                      style={{
+                        fontFamily: "inherit",
+                        fontSize: "90px",
+                        color: "#fff",
+                        fontWeight: "700",
+                      }}
+                    >
+                      {content.boldText1}
+                      <br />
+                      <span style={{ fontWeight: "100" }}>
+                        {content.normalText}&nbsp;
+                      </span>
+                      {content.boldText2}
+                    </h2>
+                  </div>
+                ))}
+              </OwlCarousel>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Course Category Section */}
       <section
         id="course-category"
