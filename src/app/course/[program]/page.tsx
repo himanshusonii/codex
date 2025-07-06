@@ -106,7 +106,7 @@ const CoursePage = () => {
 
           <div className="row">
             {courses.map((course, idx) => {
-              const detailsHref = `/course-details.html?prog=${course.pk}&course=${course.sk}`;
+              const detailsHref = `/course/${programSlug}/${course.sk}`;
               return (
                 <div className="col-md-4 mb-4" key={course.sk || idx} data-aos="fade-up">
   <div className="card h-100 shadow-sm best-course-pic-text relative-position">
