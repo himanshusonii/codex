@@ -1,26 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState, ReactNode } from "react";
+import { useEffect, useState, useRef, ReactNode } from "react";
 
 interface Slide {
   content: ReactNode;
 }
 
 interface CarouselSectionProps {
+  slides: { content: ReactNode }[];
+  interval?: number;
   id?: string;
   backgroundClass?: string;
-  slides: Slide[];
-  interval?: number;
 }
 
-const CarouselSection = ({
-  id = "slide",
-  backgroundClass = "exsciton-bg slider-bg-1 shapedividers_com-7550",
-  slides,
-  interval = 3500,
-}: CarouselSectionProps) => {
+
+const CarouselSection = ({ slides, interval = 3500 }: CarouselSectionProps) => {
   const [current, setCurrent] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const slideCount = slides.length;
 
   useEffect(() => {
@@ -36,22 +33,21 @@ const CarouselSection = ({
   }, [current, slideCount, interval]);
 
   return (
-    <section id={id} className="slider-section inner-page-slider">
+    <section id="slide" className="slider-section inner-page-slider">
       <div className="slider-item-details">
-        <div
-          className={`slider-area ${backgroundClass} relative min-h-[300px] md:min-h-[500px] overflow-hidden`}
-        >
-          <div className="category-slide relative w-full h-full">
+        <div className="slider-area exsciton-bg slider-bg-1 relative-position shapedividers_com-7550">
+          <div className="category-slide">
             {slides.map((slide, idx) => (
               <div
                 key={idx}
-                className={`slider-text absolute top-0 left-0 w-full h-full flex justify-center items-center transition-opacity duration-700 ease-in-out ${
-                  idx === current ? "opacity-100 z-10" : "opacity-0 z-0"
+                className={`slider-text ${
+                  idx === current ? "d-block" : "d-none"
                 }`}
               >
-                <div className="section-title mb20 headline text-center text-white">
+                <div className="section-title mb20 headline text-center">
                   <div className="layer-1-3">{slide.content}</div>
                 </div>
+                <div className="layer-1-4 text-center">{/* optional button layer */}</div>
               </div>
             ))}
           </div>

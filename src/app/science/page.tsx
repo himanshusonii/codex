@@ -102,7 +102,7 @@ const SciencePage = () => {
                         Find a Location
                       </a>
                     ) : (
-                      <a href="/course.html?prog=PROG_SCIENCE" className="btn">
+                      <a href="/course/science" className="btn">
                         Enroll Now
                       </a>
                     )}
@@ -150,7 +150,7 @@ const SciencePage = () => {
                         Find a Location
                       </a>
                     ) : (
-                      <a href="/course.html?prog=PROG_SCIENCE" className="btn">
+                      <a href="/course/science" className="btn">
                         Enroll Now
                       </a>
                     )}
@@ -197,7 +197,7 @@ const SciencePage = () => {
                         Find a Location
                       </a>
                     ) : (
-                      <a href="/course.html?prog=PROG_SCIENCE" className="btn">
+                      <a href="/course/science" className="btn">
                         Enroll Now
                       </a>
                     )}
@@ -246,7 +246,7 @@ const SciencePage = () => {
                         Find a Location
                       </a>
                     ) : (
-                      <a href="/course.html?prog=PROG_SCIENCE" className="btn">
+                      <a href="/course/science" className="btn">
                         Join Now
                       </a>
                     )}

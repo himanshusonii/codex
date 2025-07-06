@@ -48,17 +48,32 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head></head>
+      <head>
+        {/* ✅ Load CSS from public/assets/css via <link> */}
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/assets/css/fontawesome-all.css" />
+        <link rel="stylesheet" href="/assets/css/owl.carousel.css" />
+        <link rel="stylesheet" href="/assets/css/animate.min.css" />
+        <link rel="stylesheet" href="/assets/css/lightbox.css" />
+        <link rel="stylesheet" href="/assets/css/video.min.css" />
+        <link rel="stylesheet" href="/assets/css/flaticon.css" />
+        <link rel="stylesheet" href="/assets/css/meanmenu.css" />
+        <link rel="stylesheet" href="/assets/css/progess.css" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="/assets/css/code.css" />
+        <link rel="stylesheet" href="/assets/css/custom.css" />
+        <link rel="stylesheet" href="/assets/css/responsive.css" />
+        <link rel="stylesheet" href="/assets/css/colors/switch.css" />
+      </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}>
         <LocationProvider>
           <Navbar />
-          <main className="">
+          <main>
             <AOSInit />
             {children}
             <Footer />
@@ -91,3 +106,4 @@ export default function RootLayout({
     </html>
   );
 }
+

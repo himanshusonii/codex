@@ -687,3 +687,33 @@
   color: #019267;
   text-shadow: 15px 0 #019267;
 }
+.cc-card {
+  background-color: #f7f7f7;
+}
+/* Initial state: hidden button */
+.course-details-btn {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Fade in the button when hovering the image/card */
+.best-course-pic:hover .course-details-btn {
+  opacity: 1;
+}
+
+/* Transparent button style */
+.best-course-pic .btn {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: #fff !important;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Optional: underline or subtle effect on hover */
+.best-course-pic .btn:hover {
+  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
