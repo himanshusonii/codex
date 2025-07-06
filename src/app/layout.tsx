@@ -4,11 +4,14 @@ import Navbar from "@/components/Navbar";
 import { LocationProvider } from "@/lib/LocationContext";
 import "./globals.css"; // Global CSS
 import "aos/dist/aos.css";
+//react-owl-carousel NPM
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import AOSInit from "@/components/AOSInit";
 import Footer from "@/components/Footer";
 
-import "../../public/assets/css/owl.carousel.css"; // Local CSS files
+//import "../../public/assets/css/owl.carousel.css"; // Local CSS files
 import "../../public/assets/css/fontawesome-all.css";
 import "../../public/assets/css/flaticon.css";
 import "../../public/assets/css/meanmenu.css";
@@ -52,8 +55,7 @@ export default function RootLayout({
     <html lang="en">
       <head></head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
-      >
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}>
         <LocationProvider>
           <Navbar />
           <main className="">
@@ -65,16 +67,13 @@ export default function RootLayout({
         {/* External Scripts */}
         <Script
           src="/assets/js/jquery-2.1.4.min.js"
-          strategy="beforeInteractive"
-        ></Script>
-        <Script
+          strategy="beforeInteractive"></Script>
+        {/* <Script
           src="/assets/js/owl.carousel.min.js"
-          strategy="afterInteractive"
-        ></Script>
+          strategy="afterInteractive"></Script> */}
         <Script
           src="/assets/js/bootstrap.min.js"
-          strategy="beforeInteractive"
-        ></Script>
+          strategy="beforeInteractive"></Script>
         <Script src="/assets/js/popper.min.js"></Script>
         <Script src="/assets/js/jarallax.js"></Script>
         <Script src="/assets/js/jquery.magnific-popup.min.js"></Script>
