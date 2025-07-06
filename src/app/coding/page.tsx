@@ -9,16 +9,6 @@ const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
 });
 
-const options = {
-  loop: true,
-  margin: 10,
-  nav: false,
-  items: 1,
-  dots: false,
-  autoplay: true,
-  autoplayTimeout: 5000,
-};
-
 interface CodingPageHeroSection {
   boldText1: string;
   normalText: string;
@@ -63,7 +53,13 @@ const Coding: React.FC = () => {
         <div className="slider-item-details">
           <div className="slider-area codeing-bg slider-bg-1 relative-position shapedividers_com-9470">
             <div className="" style={{ transform: "translateY(90%)" }}>
-              <OwlCarousel className="" {...options}>
+              <OwlCarousel
+                className=""
+                loop
+                margin={10}
+                items={1}
+                autoplay
+                autoplayTimeout={3000}>
                 {HeroSectionContent.map((content, index) => (
                   <div className="item text-center" key={index}>
                     <h2
