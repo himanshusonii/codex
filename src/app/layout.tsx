@@ -45,50 +45,60 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <head></head>
+      <head>
+        {/* ✅ Load CSS from public/assets/css via <link> */}
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/assets/css/fontawesome-all.css" />
+        <link rel="stylesheet" href="/assets/css/owl.carousel.css" />
+        <link rel="stylesheet" href="/assets/css/animate.min.css" />
+        <link rel="stylesheet" href="/assets/css/lightbox.css" />
+        <link rel="stylesheet" href="/assets/css/video.min.css" />
+        <link rel="stylesheet" href="/assets/css/flaticon.css" />
+        <link rel="stylesheet" href="/assets/css/meanmenu.css" />
+        <link rel="stylesheet" href="/assets/css/progess.css" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="/assets/css/code.css" />
+        <link rel="stylesheet" href="/assets/css/custom.css" />
+        <link rel="stylesheet" href="/assets/css/responsive.css" />
+        <link rel="stylesheet" href="/assets/css/colors/switch.css" />
+      </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
         <LocationProvider>
           <Navbar />
-          <main className="">
+          <main>
             <AOSInit />
             {children}
             <Footer />
           </main>
         </LocationProvider>
-        {/* External Scripts */}
+
+        {/* ✅ JS from public assets */}
+        <Script src="/assets/js/jquery-2.1.4.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/bootstrap.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/owl.carousel.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/popper.min.js" />
+        <Script src="/assets/js/jarallax.js" />
+        <Script src="/assets/js/jquery.magnific-popup.min.js" />
+        <Script src="/assets/js/lightbox.js" />
+        <Script src="/assets/js/jquery.meanmenu.js" />
+        <Script src="/assets/js/scrollreveal.min.js" />
+        <Script src="/assets/js/jquery.counterup.min.js" />
+        <Script src="/assets/js/waypoints.min.js" />
+        <Script src="/assets/js/jquery-ui.js" />
+        <Script src="/assets/js/gmap3.min.js" />
+        <Script src="/assets/js/switch.js" />
+        <Script src="/assets/js/Script.js" defer />
         <Script
-          src="/assets/js/jquery-2.1.4.min.js"
-          strategy="beforeInteractive"
-        ></Script>
-        <Script
-          src="/assets/js/owl.carousel.min.js"
-          strategy="afterInteractive"
-        ></Script>
-        <Script
-          src="/assets/js/bootstrap.min.js"
-          strategy="beforeInteractive"
-        ></Script>
-        <Script src="/assets/js/popper.min.js"></Script>
-        <Script src="/assets/js/jarallax.js"></Script>
-        <Script src="/assets/js/jquery.magnific-popup.min.js"></Script>
-        <Script src="/assets/js/lightbox.js"></Script>
-        <Script src="/assets/js/jquery.meanmenu.js"></Script>
-        <Script src="/assets/js/scrollreveal.min.js"></Script>
-        <Script src="/assets/js/jquery.counterup.min.js"></Script>
-        <Script src="/assets/js/waypoints.min.js"></Script>
-        <Script src="/assets/js/jquery-ui.js"></Script>
-        <Script src="/assets/js/gmap3.min.js"></Script>
-        <Script src="/assets/js/switch.js"></Script>
-        <Script src="http://maps.google.com/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"></Script>
-        <Script src="/assets/js/Script.js" defer></Script>
+          src="https://maps.google.com/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"
+        />
       </body>
     </html>
   );
 }
+

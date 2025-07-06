@@ -40,7 +40,7 @@ const CourseBlock: React.FC<CourseBlockProps> = ({
               <h2>{title}</h2>
               <p dangerouslySetInnerHTML={{ __html: description }} />
               {location ? (
-                <Link href="/course?prog=PROG_CODING" className="btn">
+                <Link href="/course/coding" className="btn">
                   {btnText}
                 </Link>
               ) : (

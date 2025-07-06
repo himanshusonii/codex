@@ -15,7 +15,7 @@ const MathPage = () => {
             <span>Potential</span>
           </h2>
           <div className="layer-1-4 text-center mt-4">
-            <a className="btn" href="https://...">
+            <a className="btn" href="/course/math">
               Book an assessment
             </a>
           </div>
@@ -30,7 +30,7 @@ const MathPage = () => {
             Conquer <span>Competitions</span>
           </h2>
           <div className="layer-1-4 text-center mt-4">
-            <a className="btn" href="https://...">
+            <a className="btn" href="/course/math">
               Book an assessment
             </a>
           </div>
@@ -45,7 +45,7 @@ const MathPage = () => {
             <span>Excel</span>
           </h2>
           <div className="layer-1-4 text-center mt-4">
-            <a className="btn" href="https://...">
+            <a className="btn" href="/course/math">
               Book an assessment
             </a>
           </div>
@@ -123,7 +123,7 @@ const MathPage = () => {
                     </p>
                     
                     <a
-                      href="course.html?prog=PROG_MATH"
+                      href="/course/math"
                       className="btn"
                       v-if="location"
                     >
@@ -171,7 +171,7 @@ const MathPage = () => {
                     </p>
                     
                     <a
-                      href="course.html?prog=PROG_MATH"
+                      href="/course/math"
                       className="btn"
                       v-if="location"
                     >
@@ -217,7 +217,7 @@ const MathPage = () => {
                     </p>
                     
                     <a
-                      href="course.html?prog=PROG_MATH"
+                      href="/course/math"
                       className="btn"
                       v-if="location"
                     >
