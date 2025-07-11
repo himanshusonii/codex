@@ -78,7 +78,7 @@ const CourseDetailPage = () => {
   }, [program, course, router]);
 
   const getCourseEnrollLink = (item: Course) =>
-    `/check-out.html?prog=${item.pk}&course=${item.sk}`;
+    `/check-out?prog=${item.pk}&course=${item.sk}`;
 
   if (!courseData) {
     return (

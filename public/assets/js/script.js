@@ -30,7 +30,7 @@ Author:         HTMLMATE Team
         // this.testimonialSlide();
         this.videoPopup();
         // this.sponsorSlide();
-        this.contactMAP();
+        // this.contactMAP();
         this.rateReview();
         // this.categorySlide();
         // this.testi_2Slide();
@@ -336,127 +336,127 @@ Author:         HTMLMATE Team
 
       /* Start  Contact Map section
 			================================================*/
-      contactMAP: function () {
-        function isMobile() {
-          return "ontouchstart" in document.documentElement;
-        }
+      // contactMAP: function () {
+      //   function isMobile() {
+      //     return "ontouchstart" in document.documentElement;
+      //   }
 
-        function init_gmap() {
-          if (typeof google == "undefined") return;
-          var options = {
-            center: [40.712775, -74.005973],
-            zoom: 14,
-            styles: [
-              { elementType: "geometry", stylers: [{ color: "#eeeeee" }] },
-              {
-                elementType: "labels.text.stroke",
-                stylers: [{ color: "#eeeeee" }],
-              },
-              {
-                elementType: "labels.text.fill",
-                stylers: [{ color: "#eeeeee" }],
-              },
-              {
-                featureType: "administrative.locality",
-                elementType: "labels.text.fill",
-                stylers: [{ color: "#cdc9c2" }],
-              },
-              {
-                featureType: "poi",
-                elementType: "labels.text.fill",
-                stylers: [{ color: "#cdc9c2" }],
-              },
-              {
-                featureType: "poi.park",
-                elementType: "geometry",
-                stylers: [{ color: "#cdc9c2" }],
-              },
-              {
-                featureType: "poi.park",
-                elementType: "labels.text.fill",
-                stylers: [{ color: "#c6c9c3" }],
-              },
-              {
-                featureType: "road",
-                elementType: "geometry",
-                stylers: [{ color: "#c6c9c3" }],
-              },
-              {
-                featureType: "road",
-                elementType: "geometry.stroke",
-                stylers: [{ color: "#cdc9c2" }],
-              },
-              {
-                featureType: "road",
-                elementType: "labels.text.fill",
-                stylers: [{ color: "#cdc9c2" }],
-              },
-              {
-                featureType: "road.highway",
-                elementType: "geometry",
-                stylers: [{ color: "#cdc9c2" }],
-              },
-              {
-                featureType: "road.highway",
-                elementType: "geometry.stroke",
-                stylers: [{ color: "#cdc9c2" }],
-              },
-              {
-                featureType: "road.highway",
-                elementType: "labels.text.fill",
-                stylers: [{ color: "#cdc9c2" }],
-              },
-              {
-                featureType: "transit",
-                elementType: "geometry",
-                stylers: [{ color: "#e4e4e3" }],
-              },
-              {
-                featureType: "transit.station",
-                elementType: "labels.text.fill",
-                stylers: [{ color: "#e4e4e3" }],
-              },
-              {
-                featureType: "water",
-                elementType: "geometry",
-                stylers: [{ color: "#c3c7cc" }],
-              },
-              {
-                featureType: "water",
-                elementType: "labels.text.fill",
-                stylers: [{ color: "#c3c7cc" }],
-              },
-              {
-                featureType: "water",
-                elementType: "labels.text.stroke",
-                stylers: [{ color: "#c3c7cc" }],
-              },
-            ],
-            mapTypeControl: true,
-            mapTypeControlOptions: {
-              style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-            },
-            navigationControl: true,
-            scrollwheel: false,
-            streetViewControl: true,
-          };
+      //   function init_gmap() {
+      //     if (typeof google == "undefined") return;
+      //     var options = {
+      //       center: [40.712775, -74.005973],
+      //       zoom: 14,
+      //       styles: [
+      //         { elementType: "geometry", stylers: [{ color: "#eeeeee" }] },
+      //         {
+      //           elementType: "labels.text.stroke",
+      //           stylers: [{ color: "#eeeeee" }],
+      //         },
+      //         {
+      //           elementType: "labels.text.fill",
+      //           stylers: [{ color: "#eeeeee" }],
+      //         },
+      //         {
+      //           featureType: "administrative.locality",
+      //           elementType: "labels.text.fill",
+      //           stylers: [{ color: "#cdc9c2" }],
+      //         },
+      //         {
+      //           featureType: "poi",
+      //           elementType: "labels.text.fill",
+      //           stylers: [{ color: "#cdc9c2" }],
+      //         },
+      //         {
+      //           featureType: "poi.park",
+      //           elementType: "geometry",
+      //           stylers: [{ color: "#cdc9c2" }],
+      //         },
+      //         {
+      //           featureType: "poi.park",
+      //           elementType: "labels.text.fill",
+      //           stylers: [{ color: "#c6c9c3" }],
+      //         },
+      //         {
+      //           featureType: "road",
+      //           elementType: "geometry",
+      //           stylers: [{ color: "#c6c9c3" }],
+      //         },
+      //         {
+      //           featureType: "road",
+      //           elementType: "geometry.stroke",
+      //           stylers: [{ color: "#cdc9c2" }],
+      //         },
+      //         {
+      //           featureType: "road",
+      //           elementType: "labels.text.fill",
+      //           stylers: [{ color: "#cdc9c2" }],
+      //         },
+      //         {
+      //           featureType: "road.highway",
+      //           elementType: "geometry",
+      //           stylers: [{ color: "#cdc9c2" }],
+      //         },
+      //         {
+      //           featureType: "road.highway",
+      //           elementType: "geometry.stroke",
+      //           stylers: [{ color: "#cdc9c2" }],
+      //         },
+      //         {
+      //           featureType: "road.highway",
+      //           elementType: "labels.text.fill",
+      //           stylers: [{ color: "#cdc9c2" }],
+      //         },
+      //         {
+      //           featureType: "transit",
+      //           elementType: "geometry",
+      //           stylers: [{ color: "#e4e4e3" }],
+      //         },
+      //         {
+      //           featureType: "transit.station",
+      //           elementType: "labels.text.fill",
+      //           stylers: [{ color: "#e4e4e3" }],
+      //         },
+      //         {
+      //           featureType: "water",
+      //           elementType: "geometry",
+      //           stylers: [{ color: "#c3c7cc" }],
+      //         },
+      //         {
+      //           featureType: "water",
+      //           elementType: "labels.text.fill",
+      //           stylers: [{ color: "#c3c7cc" }],
+      //         },
+      //         {
+      //           featureType: "water",
+      //           elementType: "labels.text.stroke",
+      //           stylers: [{ color: "#c3c7cc" }],
+      //         },
+      //       ],
+      //       mapTypeControl: true,
+      //       mapTypeControlOptions: {
+      //         style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      //       },
+      //       navigationControl: true,
+      //       scrollwheel: false,
+      //       streetViewControl: true,
+      //     };
 
-          if (isMobile()) {
-            options.draggable = false;
-          }
+      //     if (isMobile()) {
+      //       options.draggable = false;
+      //     }
 
-          $("#googleMaps").gmap3({
-            map: {
-              options: options,
-            },
-            marker: {
-              latLng: [40.712775, -74.005973],
-              options: { icon: "assets/img/map.png" },
-            },
-          });
-        }
-        init_gmap();
-      },
+      //     $("#googleMaps").gmap3({
+      //       map: {
+      //         options: options,
+      //       },
+      //       marker: {
+      //         latLng: [40.712775, -74.005973],
+      //         options: { icon: "assets/img/map.png" },
+      //       },
+      //     });
+      //   }
+      //   init_gmap();
+      // },
 
       /* End Contact Map section
 			================================================*/

@@ -70,7 +70,8 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
+      >
         <LocationProvider>
           <Navbar />
           <main>
@@ -82,13 +83,15 @@ export default function RootLayout({
         {/* External Scripts */}
         <Script
           src="/assets/js/jquery-2.1.4.min.js"
-          strategy="beforeInteractive"></Script>
+          strategy="beforeInteractive"
+        ></Script>
         {/* <Script
           src="/assets/js/owl.carousel.min.js"
           strategy="afterInteractive"></Script> */}
         <Script
           src="/assets/js/bootstrap.min.js"
-          strategy="beforeInteractive"></Script>
+          strategy="beforeInteractive"
+        ></Script>
         <Script src="/assets/js/popper.min.js"></Script>
         <Script src="/assets/js/jarallax.js"></Script>
         <Script src="/assets/js/jquery.magnific-popup.min.js"></Script>
@@ -100,10 +103,9 @@ export default function RootLayout({
         <Script src="/assets/js/jquery-ui.js"></Script>
         <Script src="/assets/js/gmap3.min.js"></Script>
         <Script src="/assets/js/switch.js"></Script>
-        <Script src="http://maps.google.com/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"></Script>
+        {/*<Script src="http://maps.google.com/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"></Script>*/}
         <Script src="/assets/js/Script.js" defer></Script>
       </body>
     </html>
   );
 }
-

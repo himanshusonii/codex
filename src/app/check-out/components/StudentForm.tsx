@@ -16,10 +16,11 @@ export default function StudentForm({
       </div>
       <div className="payment-method">
         <div className="payment-info">
-          <label>
+          <label htmlFor="student-first-name">
             First Name <span className="required">*</span>
           </label>
           <input
+            id="student-first-name"
             type="text"
             className="form-control"
             value={studentInfo.firstName}
@@ -27,19 +28,21 @@ export default function StudentForm({
           />
         </div>
         <div className="payment-info">
-          <label>
+          <label htmlFor="student-last-name">
             Last Name <span className="required">*</span>
           </label>
           <input
+            id="student-last-name"
             type="text"
             className="form-control"
             value={studentInfo.lastName}
             onChange={(e) => onChange("lastName", e.target.value)}
           />
         </div>
-        <div className="payment-info input-2">
-          <label>Date of Birth</label>
+        <div className="payment-info">
+          <label htmlFor="student-dob">Date of Birth</label>
           <input
+            id="student-dob"
             type="date"
             className="form-control"
             value={studentInfo.dob}
