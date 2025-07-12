@@ -1,13 +1,13 @@
 "use client";
 
 import FAQ from "@/components/FAQ";
-import MissionStatement from "@/components/MissionStatement";
 import ParentTestimonials from "@/components/ParentTestimonial";
 import Teachers from "@/components/Teachers";
 import Head from "next/head";
 import Image from "next/image";
 
 import dynamic from "next/dynamic";
+import ContactForm from "@/components/ContactForm";
 const OwlCarousel = dynamic(() => import("react-owl-carousel"), {
   ssr: false,
 });
@@ -17,6 +17,7 @@ interface Course {
   description: string;
   imageFileName: string;
   aosStyle: string;
+  link: string;
 }
 
 interface Advantage {
@@ -32,6 +33,7 @@ const coursesData: Course[] = [
       "Master math with our engaging curriculum and expert guidance.",
     imageFileName: "math-cat.png",
     aosStyle: "fade-right",
+    link: "/math",
   },
   {
     title: "Coding",
@@ -39,6 +41,7 @@ const coursesData: Course[] = [
       "Learn coding from industry experts and build your digital future.",
     imageFileName: "code-cat.png",
     aosStyle: "zoom-in",
+    link: "/coding",
   },
   {
     title: "Science Unleashed",
@@ -46,6 +49,7 @@ const coursesData: Course[] = [
       "Experience hands-on science experiments and ignite your curiosity.",
     imageFileName: "science-cat.png",
     aosStyle: "fade-left",
+    link: "/science",
   },
 ];
 
@@ -109,7 +113,8 @@ const HomePage: React.FC = () => {
           items={1}
           autoplay
           autoplayTimeout={3000}
-          dots={false}>
+          dots={false}
+        >
           <div className="item slider-area slider-bg-1 relative-position">
             <h2 className="newCarouselItem transDown">
               <span>Unlock</span> Young <br />
@@ -182,7 +187,8 @@ const HomePage: React.FC = () => {
         <div className="container">
           <div
             className="section-title mb45 headline text-center"
-            data-aos="zoom-in">
+            data-aos="zoom-in"
+          >
             <span className="subtitle text-uppercase">Our Popular Courses</span>
             <h2>
               Our<span> Program Offering</span>
@@ -194,29 +200,30 @@ const HomePage: React.FC = () => {
                 <div
                   className="col-md-4"
                   data-aos={course.aosStyle}
-                  key={index}>
-                  <div className="best-course-pic-text relative-position">
-                    <div className="best-course-pic relative-position">
-                      <Image
-                        src={"/assets/img/course/" + course.imageFileName}
-                        alt=""
-                        width={500}
-                        height={500}
-                      />
-                    </div>
-                    <div className="best-course-text">
-                      <div className="course-title mb20 headline relative-position">
-                        <h2>
-                          <a href="math.html">{course.title}</a>
-                        </h2>
+                  key={index}
+                >
+                  <a href={course.link}>
+                    <div className="best-course-pic-text relative-position">
+                      <div className="best-course-pic relative-position">
+                        <Image
+                          src={"/assets/img/course/" + course.imageFileName}
+                          alt=""
+                          width={500}
+                          height={500}
+                        />
                       </div>
-                      <div className="course-meta">
-                        <span className="course-category">
-                          <a href="math.html">{course.description}</a>
-                        </span>
+                      <div className="best-course-text">
+                        <div className="course-title mb20 headline relative-position">
+                          <h2>{course.title}</h2>
+                        </div>
+                        <div className="course-meta">
+                          <span className="course-category">
+                            {course.description}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 </div>
               ))}
             </div>
@@ -227,11 +234,13 @@ const HomePage: React.FC = () => {
       {/* Advantage Section */}
       <section
         id="why-choose"
-        className="why-choose-section backgroud-style shapedividers_com-6217 jarallax">
+        className="why-choose-section backgroud-style shapedividers_com-6217 jarallax"
+      >
         <div className="container">
           <div
             className="section-title mb-5 headline text-center text-dark"
-            data-aos="zoom-in">
+            data-aos="zoom-in"
+          >
             <span className="subtitle text-uppercase text-dark">
               The B&B Advantage
             </span>
@@ -269,7 +278,8 @@ const HomePage: React.FC = () => {
                 <div
                   className="extra-pic text-center"
                   data-aos="fade-up"
-                  data-aos-duration="3000">
+                  data-aos-duration="3000"
+                >
                   <Image
                     src="/assets/img/banner/think-girl.png"
                     alt="img"
@@ -317,8 +327,40 @@ const HomePage: React.FC = () => {
       {/* FAQ Section */}
       <FAQ />
 
-      {/* Mission Statement */}
-      <MissionStatement />
+      <section
+        id="about-us"
+        className="about-us-section home-secound home-third"
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-md-5">
+              <div className="about-resigter-form backgroud-style relative-position">
+                <ContactForm />
+              </div>
+            </div>
+
+            <div className="col-md-7">
+              <div className="about-us-text">
+                <div className="section-title relative-position mb20 headline text-left">
+                  <h2>
+                    <span>Our Mission</span>
+                  </h2>
+                  <p>
+                    At B&B, we empower young minds to master skills that shape
+                    their future. Through innovative, hands-on learning, we make
+                    complex subjects accessible and engaging. Our multi-year
+                    curriculum ensures consistent growth, while expert
+                    instructors provide personalized guidance every step of the
+                    way. Our mission is to spark curiosity, build confidence,
+                    and equip children for tomorrow’s challenges, all while
+                    making learning an adventure.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

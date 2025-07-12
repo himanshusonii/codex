@@ -4,16 +4,8 @@ import { useState } from "react";
 import axios from "@/lib/axios";
 import Image from "next/image";
 
-interface FormData {
-  name: string;
-  msg: string;
-  operationType?: string;
-}
-
 const Footer: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({ name: "", msg: "" });
   const [emailSubscription, setEmailSubscription] = useState("");
-  const [emailSendMsg, setEmailSendMsg] = useState("");
 
   const [subscriptionSuccess, setSubscriptionSuccess] = useState(false);
   const [subscriptionError, setSubscriptionError] = useState(false);
@@ -24,32 +16,20 @@ const Footer: React.FC = () => {
     setSubscriptionSuccess(false);
   };
 
-  const handleSubmit = async (operationType: "sendMsg" | "subscription") => {
+  const handleSubmit = async () => {
     clearMessages();
-    const isSendMsg = operationType === "sendMsg";
 
-    if (
-      (isSendMsg && (!formData.name || !emailSendMsg || !formData.msg)) ||
-      (!isSendMsg && !emailSubscription)
-    ) {
+    if (!emailSubscription) {
       setSubscriptionError(true);
       return;
     }
 
     setSubscriptionProcessing(true);
-
-    const payload = {
-      ...formData,
-      email: isSendMsg ? emailSendMsg : emailSubscription,
-      operationType,
-    };
-
+    const payload = { email: emailSubscription };
     try {
-      await axios.post("/send-msg/create", payload);
+      await axios.post("/subscribe", payload);
 
       setSubscriptionSuccess(true);
-      setFormData({ name: "", msg: "" });
-      setEmailSendMsg("");
       setEmailSubscription("");
     } catch (error) {
       console.error("Submit error:", error);
@@ -157,7 +137,7 @@ const Footer: React.FC = () => {
                           <button
                             type="button"
                             disabled={subscriptionProcessing}
-                            onClick={() => handleSubmit("subscription")}
+                            onClick={() => handleSubmit()}
                           >
                             {subscriptionProcessing
                               ? "Please wait..."

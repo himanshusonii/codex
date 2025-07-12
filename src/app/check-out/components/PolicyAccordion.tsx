@@ -3,9 +3,14 @@
 export default function PolicyAccordion({
   policies,
   toggleDetail,
+  RequiredPolicies,
 }: {
   policies: any[];
   toggleDetail: (index: number) => void;
+  RequiredPolicies: {
+    value: boolean;
+    setValue: (val: boolean) => void;
+  };
 }) {
   return (
     <div className="order-item mb65 course-page-section">
@@ -14,9 +19,18 @@ export default function PolicyAccordion({
           Required <span>Policies</span>
         </h2>
       </div>
+
       <div className="section-title-2 headline text-left float-right">
         <h2>
           Accept all <span>Policies</span> <span className="required">*</span>
+          <input
+            type="checkbox"
+            name="course-policy"
+            className="myinput large ml-3"
+            style={{ transform: "scale(2.2)" }}
+            checked={!!RequiredPolicies.value}
+            onChange={(e) => RequiredPolicies.setValue(e.target.checked)}
+          />
         </h2>
       </div>
 
@@ -31,22 +45,19 @@ export default function PolicyAccordion({
           </thead>
           <tbody>
             {policies.map((policy, index) => (
-              <tr key={index}>
+              <tr key={index} onClick={() => toggleDetail(index)}>
                 <td style={{ width: "10%" }}>
                   <i
                     className={`fas ${
                       policy.displayDetails ? "fa-minus" : "fa-plus"
                     }`}
                     style={{ fontSize: "x-large", cursor: "pointer" }}
-                    onClick={() => toggleDetail(index)}
                   />
                 </td>
                 <td style={{ width: "25%" }}>
                   <div className="course-list-img-text">
                     <div className="course-list-text">
-                      <h3>
-                        <a href="#">{policy.name}</a>
-                      </h3>
+                      <h3>{policy.name}</h3>
                     </div>
                   </div>
                 </td>

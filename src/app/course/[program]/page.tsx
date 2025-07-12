@@ -3,15 +3,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import axiosInstance from "@/lib/axios";
 
 interface Course {
+  program: any;
   pk: string;
   sk: string;
   courseName: string;
   thumbnailImage: string;
 }
 
-const programMap: Record<string, { code: string; label: string; href: string }> = {
+const programMap: Record<
+  string,
+  { code: string; label: string; href: string }
+> = {
   coding: { code: "PROG_CODING", label: "Coding", href: "/coding" },
   science: { code: "PROG_SCIENCE", label: "Science", href: "/science" },
   math: { code: "PROG_MATH", label: "Math", href: "/math" },
@@ -31,18 +36,16 @@ const CoursePage = () => {
 
     const fetchCourses = async () => {
       try {
-        const location = typeof window !== "undefined" ? localStorage.getItem("location") : null;
-        const response = await fetch(
-          "https://o145r4of4g.execute-api.us-east-1.amazonaws.com/dev/program/detail-by-pk",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ pk: program.code, location }),
-          }
-        );
+        const location =
+          typeof window !== "undefined"
+            ? localStorage.getItem("location")
+            : null;
+        const res = await axiosInstance.post("/program/detail", {
+          pk: program.code,
+          location,
+        });
 
-        const data = await response.json();
-        setCourses(data.items || []);
+        setCourses(res.data || []);
       } catch (err) {
         setError("Failed to load courses");
       } finally {
@@ -69,7 +72,10 @@ const CoursePage = () => {
   return (
     <>
       {/* Breadcrumb Section */}
-      <section id="breadcrumb" className="breadcrumb-section relative-position backgroud-style">
+      <section
+        id="breadcrumb"
+        className="breadcrumb-section relative-position backgroud-style"
+      >
         <div className="blakish-overlay"></div>
         <div className="container">
           <div className="page-breadcrumb-content text-center">
@@ -95,7 +101,9 @@ const CoursePage = () => {
       {/* Course List Section */}
       <section id="course-page" className="course-page-section">
         <div className="container py-10">
-          <h3 className="mb-5 text-center">Showing courses for: {program.label}</h3>
+          <h3 className="mb-5 text-center">
+            Showing courses for: {program.label}
+          </h3>
 
           {loading && <p className="text-center">Loading...</p>}
           {error && <p className="text-center text-danger">{error}</p>}
@@ -106,34 +114,40 @@ const CoursePage = () => {
 
           <div className="row">
             {courses.map((course, idx) => {
-              const detailsHref = `/course/${programSlug}/${course.sk}`;
+              const detailsHref = `/course/${programSlug}/${course.program}`;
               return (
-                <div className="col-md-4 mb-4" key={course.sk || idx} data-aos="fade-up">
-  <div className="card h-100 shadow-sm best-course-pic-text relative-position">
-    <div className="best-course-pic relative-position card-img-top position-relative overflow-hidden">
-      <img
-        src={course.thumbnailImage}
-        alt={course.courseName}
-        className="img-fluid w-100"
-        style={{ height: "220px", objectFit: "cover" }}
-      />
-      <div className="course-details-btn position-absolute bottom-0 start-0 p-2">
-        <Link href={detailsHref} className="btn btn-sm btn-primary text-white">
-          COURSE DETAIL <i className="fas fa-arrow-right"></i>
-        </Link>
-      </div>
-      <div className="blakish-overlay position-absolute w-100 h-100" />
-    </div>
-    <div className="card-body best-course-text cc-card">
-      <div className="course-title headline relative-position">
-        <h5 className="card-title">
-          <Link href={detailsHref}>{course.courseName}</Link>
-        </h5>
-      </div>
-    </div>
-  </div>
-</div>
-
+                <div
+                  className="col-md-4 mb-4"
+                  key={course.sk || idx}
+                  data-aos="fade-up"
+                >
+                  <div className="card h-100 shadow-sm best-course-pic-text relative-position">
+                    <div className="best-course-pic relative-position card-img-top position-relative overflow-hidden">
+                      <img
+                        src={course.thumbnailImage}
+                        alt={course.courseName}
+                        className="img-fluid w-100"
+                        style={{ height: "220px", objectFit: "cover" }}
+                      />
+                      <div className="course-details-btn position-absolute bottom-0 start-0 p-2">
+                        <Link
+                          href={detailsHref}
+                          className="btn btn-sm btn-primary text-white"
+                        >
+                          COURSE DETAIL <i className="fas fa-arrow-right"></i>
+                        </Link>
+                      </div>
+                      <div className="blakish-overlay position-absolute w-100 h-100" />
+                    </div>
+                    <div className="card-body best-course-text cc-card">
+                      <div className="course-title headline relative-position">
+                        <h5 className="card-title">
+                          <Link href={detailsHref}>{course.courseName}</Link>
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </div>

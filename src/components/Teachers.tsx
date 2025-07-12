@@ -20,8 +20,8 @@ const Teachers: React.FC = () => {
 
   useEffect(() => {
     const fetchTeachers = async () => {
-      const res = await axios.get("teacher/list");
-      setTeachers(res.data.items);
+      const res = await axios.get("teacher");
+      setTeachers(res.data);
     };
     fetchTeachers();
   }, []);
@@ -62,7 +62,7 @@ const Teachers: React.FC = () => {
                       objectFit: "fill",
                     }}
                   />
-                  <div className="blakish-overlay"></div>
+                  {/* <div className="blakish-overlay"></div>
                   <div className="teacher-social-list ul-li">
                     <ul>
                       <li>
@@ -81,7 +81,7 @@ const Teachers: React.FC = () => {
                         </a>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="teacher-name-designation mt15">
                   <span className="teacher-name">{teacher.name}</span>

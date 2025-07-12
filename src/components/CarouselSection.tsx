@@ -2,10 +2,6 @@
 
 import { useEffect, useState, useRef, ReactNode } from "react";
 
-interface Slide {
-  content: ReactNode;
-}
-
 interface CarouselSectionProps {
   slides: { content: ReactNode }[];
   interval?: number;

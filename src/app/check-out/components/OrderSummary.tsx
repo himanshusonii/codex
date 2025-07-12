@@ -20,7 +20,7 @@ export default function OrderSummary({
           <div className="purchase-list mt15 ul-li-block">
             <ul>
               <li>
-                Sign-up Fee{" "}
+                Sign-up Fee
                 <span>
                   {selectedMembership.unit}
                   {signupFee}
@@ -28,7 +28,7 @@ export default function OrderSummary({
               </li>
               {selectedMembership.type?.toLowerCase() !== "workshop" ? (
                 <li>
-                  1st payment (pro-rated){" "}
+                  1st payment (pro-rated)
                   <span>
                     {selectedMembership.unit}
                     {proRatedAmount}
@@ -36,7 +36,7 @@ export default function OrderSummary({
                 </li>
               ) : (
                 <li>
-                  Workshop Fee ({selectedMembership.name}){" "}
+                  Workshop Fee ({selectedMembership.name})
                   <span>
                     {selectedMembership.unit}
                     {selectedMembership.cost}
@@ -45,7 +45,7 @@ export default function OrderSummary({
               )}
             </ul>
             <div className="in-total">
-              Total due today{" "}
+              Total due today
               <span>
                 {selectedMembership.unit}
                 {totalDue}

@@ -53,9 +53,9 @@ const Navbar = () => {
                       <a href="#">About</a>
                       <ul className="sub-menu">
                         <li>
-                          <Link href="#">Contact Us</Link>
+                          <Link href="/contact">Contact Us</Link>
                         </li>
-                        {/* <li><Link href="news.html">News & Events</Link></li> */}
+                        {/* <li><Link href="news">News & Events</Link></li> */}
                       </ul>
                     </li>
 
@@ -71,7 +71,7 @@ const Navbar = () => {
                         <li>
                           <Link href="/math">Math</Link>
                         </li>
-                        {/* <li><Link href="camp.html">Camp</Link></li> */}
+                        {/* <li><Link href="camp">Camp</Link></li> */}
                       </ul>
                     </li>
 

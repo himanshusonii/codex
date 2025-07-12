@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import axiosInstance from "@/lib/axios";
 
 interface Course {
+  program: any;
+  thumbnailImage: string | Blob | undefined;
   pk: string;
   sk: string;
-  headerImage: string;
   headerTitle: string;
   description: string;
   descriptionImage?: string;
@@ -27,14 +29,13 @@ const CourseDetailPage = () => {
     coding: "PROG_CODING",
     science: "PROG_SCIENCE",
     math: "PROG_MATH",
-    };
-
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const loc = localStorage.getItem("location");
       if (!loc) {
-        router.push("/selectLocation.html");
+        router.push("/selectLocation");
         return;
       }
       setLocation(loc);
@@ -43,32 +44,22 @@ const CourseDetailPage = () => {
     if (!program || !course) return;
 
     const fetchCourse = async () => {
-  const pk = programMap[program || ""] || "";
-  const sk = course;
+      const pk = programMap[program || ""] || "";
+      const programCode = course;
 
-  if (!pk || !sk) return;
+      if (!pk || !programCode) return;
 
-  try {
-    const response = await fetch(
-      "https://o145r4of4g.execute-api.us-east-1.amazonaws.com/dev/program/detail-by-pk-sk",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ pk, sk }),
+      try {
+        const res = await axiosInstance.post("/program/coursedetail", {
+          pk,
+          programCode,
+        });
+
+        setCourseData(res.data);
+      } catch (err) {
+        console.error("Fetch error:", err);
       }
-    );
-
-    if (!response.ok) {
-      console.error("API error:", await response.text());
-      return;
-    }
-
-    const data = await response.json();
-    setCourseData(data.item);
-  } catch (err) {
-    console.error("Fetch error:", err);
-  }
-};
+    };
 
     fetchCourse();
 
@@ -78,20 +69,53 @@ const CourseDetailPage = () => {
   }, [program, course, router]);
 
   const getCourseEnrollLink = (item: Course) =>
-    `/check-out?prog=${item.pk}&course=${item.sk}`;
+    `/check-out?prog=${item.pk}&course=${item.program}`;
 
   if (!courseData) {
     return (
-      <section className="container py-5">
-        <p>Loading course details...</p>
-      </section>
+      <>
+        <section
+          id="breadcrumb"
+          className="breadcrumb-section relative-position backgroud-style"
+        >
+          <div className="blakish-overlay"></div>
+          <div className="container">
+            <div className="page-breadcrumb-content text-center">
+              <div className="page-breadcrumb-title">
+                <h2 className="breadcrumb-head black bold">
+                  <span>Course Details</span>
+                </h2>
+              </div>
+              <div className="page-breadcrumb-item ul-li">
+                <ul className="breadcrumb text-uppercase black">
+                  <li className="breadcrumb-item">
+                    <a href={`/${program}`}>Program</a>
+                  </li>
+                  <li className="breadcrumb-item">
+                    <a href={`/course/${program}`}>Course list</a>
+                  </li>
+                  <li className="breadcrumb-item active">
+                    <span>Course details</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="container py-5">
+          <p>Loading course details...</p>
+        </section>
+      </>
     );
   }
 
   return (
     <>
       {/* Breadcrumb */}
-      <section id="breadcrumb" className="breadcrumb-section relative-position backgroud-style">
+      <section
+        id="breadcrumb"
+        className="breadcrumb-section relative-position backgroud-style"
+      >
         <div className="blakish-overlay"></div>
         <div className="container">
           <div className="page-breadcrumb-content text-center">
@@ -124,7 +148,10 @@ const CourseDetailPage = () => {
             <div className="col-md-9">
               <div className="course-details-item">
                 <div className="course-single-pic mb30">
-                  <img src={courseData.headerImage} alt={courseData.headerTitle} />
+                  <img
+                    src={courseData.thumbnailImage}
+                    alt={courseData.headerTitle}
+                  />
                 </div>
                 <div className="course-single-text">
                   <div className="course-title mt10 headline relative-position">
@@ -134,7 +161,9 @@ const CourseDetailPage = () => {
                   </div>
                   <div className="course-details-content">
                     <div
-                      dangerouslySetInnerHTML={{ __html: courseData.description }}
+                      dangerouslySetInnerHTML={{
+                        __html: courseData.description,
+                      }}
                     ></div>
                   </div>
                 </div>
@@ -167,7 +196,8 @@ const CourseDetailPage = () => {
                       Age: <span>{courseData.ageRange || "-"}</span>
                     </li>
                     <li>
-                      Enrollment Limit: <span>{courseData.maxEnrollment || "-"}</span>
+                      Enrollment Limit:{" "}
+                      <span>{courseData.maxEnrollment || "-"}</span>
                     </li>
                   </ul>
                 </div>

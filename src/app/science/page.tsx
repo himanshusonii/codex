@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import CarouselSection from "@/components/CarouselSection";
 
 const OwlCarousel = dynamic(() => import("react-owl-carousel"), { ssr: false });
 
@@ -12,8 +11,6 @@ const SciencePage = () => {
   useEffect(() => {
     setHasLocation(!!window.location); // or pull from localStorage
   }, []);
-
-
 
   const scienceCarouselConfig = {
     loop: true,
@@ -46,7 +43,7 @@ const SciencePage = () => {
     <>
       {/* Hero Carousel */}
       <section id="slide1" className="slider-section inner-page-slider">
-        <div className="slider-area science-bg slider-bg-1 relative-position shapedividers_com-7285">
+        <div className="slider-area exsciton-bg slider-bg-1 relative-position shapedividers_com-7550">
           <div className="transDown">
             <OwlCarousel
               className=""
@@ -129,7 +126,7 @@ const SciencePage = () => {
                       K-5
                     </p>
                     {!hasLocation ? (
-                      <a href="/selectLocation.html" className="btn">
+                      <a href="/selectLocation" className="btn">
                         Find a Location
                       </a>
                     ) : (
@@ -177,7 +174,7 @@ const SciencePage = () => {
                       6-8
                     </p>
                     {!hasLocation ? (
-                      <a href="/selectLocation.html" className="btn">
+                      <a href="/selectLocation" className="btn">
                         Find a Location
                       </a>
                     ) : (
@@ -224,7 +221,7 @@ const SciencePage = () => {
                       9–12
                     </p>
                     {!hasLocation ? (
-                      <a href="/selectLocation.html" className="btn">
+                      <a href="/selectLocation" className="btn">
                         Find a Location
                       </a>
                     ) : (
@@ -273,7 +270,7 @@ const SciencePage = () => {
                       6–12
                     </p>
                     {!hasLocation ? (
-                      <a href="/selectLocation.html" className="btn">
+                      <a href="/selectLocation" className="btn">
                         Find a Location
                       </a>
                     ) : (

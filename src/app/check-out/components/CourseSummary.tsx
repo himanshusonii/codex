@@ -34,9 +34,7 @@ export default function CourseSummary({ course }: { course: any }) {
                     />
                   </div>
                   <div className="course-list-text">
-                    <h3>
-                      <a href="#">{course.courseName}</a>
-                    </h3>
+                    <h3>{course.courseName}</h3>
                   </div>
                 </div>
               </td>

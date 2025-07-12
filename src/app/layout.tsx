@@ -4,29 +4,13 @@ import Navbar from "@/components/Navbar";
 import { LocationProvider } from "@/lib/LocationContext";
 import "./globals.css"; // Global CSS
 import "aos/dist/aos.css";
-//react-owl-carousel NPM
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
 import AOSInit from "@/components/AOSInit";
 import Footer from "@/components/Footer";
 
-//import "../../public/assets/css/owl.carousel.css"; // Local CSS files
-import "../../public/assets/css/fontawesome-all.css";
-import "../../public/assets/css/flaticon.css";
-import "../../public/assets/css/meanmenu.css";
-import "../../public/assets/css/bootstrap.min.css";
-import "../../public/assets/css/video.min.css";
-import "../../public/assets/css/animate.min.css";
-import "../../public/assets/css/lightbox.css";
-import "../../public/assets/css/progess.css";
-import "../../public/assets/css/style.css";
-import "../../public/assets/css/custom.css";
-import "../../public/assets/css/responsive.css";
-import "../../public/assets/css/colors/switch.css";
-import "../../public/assets/css/code.css";
-
-import Script from "next/script"; // Next.js Script component for external scripts
+import Script from "next/script";
 import { Inter } from "next/font/google";
 // Initialize Google Font (optional)
 const inter = Inter({ subsets: ["latin"] });
@@ -52,7 +36,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* ✅ Load CSS from public/assets/css via <link> */}
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
         <link rel="stylesheet" href="/assets/css/fontawesome-all.css" />
         <link rel="stylesheet" href="/assets/css/owl.carousel.css" />
@@ -66,7 +49,6 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/code.css" />
         <link rel="stylesheet" href="/assets/css/custom.css" />
         <link rel="stylesheet" href="/assets/css/responsive.css" />
-        <link rel="stylesheet" href="/assets/css/colors/switch.css" />
       </head>
 
       <body
@@ -85,9 +67,6 @@ export default function RootLayout({
           src="/assets/js/jquery-2.1.4.min.js"
           strategy="beforeInteractive"
         ></Script>
-        {/* <Script
-          src="/assets/js/owl.carousel.min.js"
-          strategy="afterInteractive"></Script> */}
         <Script
           src="/assets/js/bootstrap.min.js"
           strategy="beforeInteractive"
@@ -103,7 +82,6 @@ export default function RootLayout({
         <Script src="/assets/js/jquery-ui.js"></Script>
         <Script src="/assets/js/gmap3.min.js"></Script>
         <Script src="/assets/js/switch.js"></Script>
-        {/*<Script src="http://maps.google.com/maps/api/js?key=AIzaSyC61_QVqt9LAhwFdlQmsNwi5aUJy9B2SyA"></Script>*/}
         <Script src="/assets/js/Script.js" defer></Script>
       </body>
     </html>

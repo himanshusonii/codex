@@ -59,12 +59,10 @@ export default function Breadcrumb() {
                 <Link href={programUrl || "#"}>Program</Link>
               </li>
               <li className="breadcrumb-item">
-                <Link href={`/course?prog=${prog}`}>Course list</Link>
+                <Link href={`/course${programUrl}`}>Course list</Link>
               </li>
               <li className="breadcrumb-item">
-                <Link href={`/course-details?prog=${prog}&course=${course}`}>
-                  Course details
-                </Link>
+                <Link href={`/course${programUrl}/${course}`}>Course details</Link>
               </li>
               <li className="breadcrumb-item active">
                 <a href="#">Course enrolment</a>
